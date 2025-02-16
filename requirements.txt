@@ -1,0 +1,11 @@
+deap==1.4.2
+ipykernel
+ipywidgets
+jupyter
+matplotlib
+numpy
+pandas
+plotly
+requests
+scikit-learn
+tqdm
