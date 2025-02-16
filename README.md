@@ -1,110 +1,141 @@
 # Enhanced Detection of DNS Tunneling: Leveraging Random Forest and Genetic Algorithm for Improved Security
 
-This repository contains the implementation of a hybrid machine learning model combining **Random Forest classifiers** and **penalty-based Genetic Algorithms (GA)** for detecting DNS tunneling attacks. The proposed method achieves state-of-the-art accuracy (99.84%) and F1-score (99.84%) on the CIRA-CIC-DoHBrw-2020 dataset.
+![Methodology Flowchart](https://github.com/MahmoudSamour/DNS-tunnelling-using-random-forest-and-genetic-algorithm/blob/main/images/flowchart_methodology.png)  
+*Figure 1: Flowchart of the proposed methodology combining Random Forest and Genetic Algorithms.*
+
+[![DOI](https://img.shields.io/badge/DOI-10.1109%2FACCESS.2024.0429000-blue)](https://doi.org/10.1109/ACCESS.2024.0429000)
+[![Python 3.8+](https://img.shields.io/badge/Python-3.8%2B-blue)](https://www.python.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+This repository implements a hybrid machine learning model combining **Random Forest classifiers** with **penalty-based Genetic Algorithms** for detecting DNS tunneling attacks. Achieves **99.84% accuracy** on the CIRA-CIC-DoHBrw-2020 dataset.
+
+## Key Innovations 🚀
+- **Adaptive Penalty GA**: Dynamically balances feature reduction & accuracy
+- **DoH-Optimized Features**: Detects patterns in encrypted DNS-over-HTTPS traffic
+- **Composite Fitness Function**: Maximizes F1-score while minimizing features
 
 ## Table of Contents
-1. [Introduction](#introduction)
-2. [Key Features](#key-features)
-3. [Dataset](#dataset)
-4. [Installation](#installation)
-5. [Usage](#usage)
-6. [Results](#results)
-7. [Contributing](#contributing)
-8. [License](#license)
-9. [Citation](#citation)
-
----
-
-## Introduction
-DNS tunneling is a covert communication technique that exploits the DNS protocol to bypass security measures. This project introduces a novel approach to detect DNS tunneling by combining **Random Forest classifiers** with a **penalty-based Genetic Algorithm** for feature selection. The method is specifically designed to handle encrypted DNS-over-HTTPS (DoH) traffic, making it robust against modern evasion techniques.
-
----
-
-## Key Features
-- **Hybrid Model**: Combines Random Forest classifiers with a penalty-based Genetic Algorithm for feature selection.
-- **Encrypted Traffic Support**: Specialized feature engineering for DNS-over-HTTPS (DoH) traffic.
-- **Adaptive Penalty Mechanism**: Dynamically adjusts the penalty term to balance feature reduction and model accuracy.
-- **High Accuracy**: Achieves 99.84% accuracy and F1-score on the CIRA-CIC-DoHBrw-2020 dataset.
-
----
-
-## Dataset
-The project uses the **CIRA-CIC-DoHBrw-2020** dataset, which includes:
-- **Benign Traffic**: DNS queries from standard web browsers (Chrome, Firefox, Edge).
-- **Malicious Traffic**: DNS tunneling traffic generated using tools like Iodine, DNS2TCP, and DNScat2.
-
-### Dataset Statistics
-
-| Traffic Type       | Number of Samples | Percentage (%) |
-|--------------------|-------------------|----------------|
-| Benign Traffic     | 114,699          | 78.55          |
-| Iodine (Malicious) | 5,704            | 3.90           |
-| DNS2TCP (Malicious)| 21,003           | 14.39          |
-| DNScat2 (Malicious)| 4,503            | 3.08           |
-| **Total**          | **145,909**      | **100.00**     |
+1. [Installation](#installation)
+2. [Dataset](#dataset)
+3. [Methodology](#methodology)
+4. [Usage](#usage)
+5. [Results](#results)
+6. [Citation](#citation)
+7. [Team](#team)
 
 ---
 
 ## Installation
-To set up the project, follow these steps:
 
-1. **Clone the repository**:
-   ```bash
-   git clone https://github.com/MahmoudSamour/DNS-tunnelling-using-random-forest-and-genetic-algorithm.git
-   cd DNS-tunnelling-using-random-forest-and-genetic-algorithm
-   ```
+1. **Clone Repository**:
+```bash
+git clone https://github.com/MahmoudSamour/DNS-tunnelling-using-random-forest-and-genetic-algorithm.git
+cd DNS-tunnelling-using-random-forest-and-genetic-algorithm
+```
 
-2. **Download the dataset**:
-   - The dataset is available from the Canadian Institute for Cybersecurity (CIC).
-   - Place the dataset files in the `DoHBrw-2020` directory.
+2. **Install Dependencies**:
+```bash
+pip install -r requirements.txt
+```
 
----
-
-
-## Results
-The proposed method achieves the following performance metrics:
-
-| Metric     | Value (%) |
-|------------|-----------|
-| Accuracy   | 99.84     |
-| Precision  | 99.84     |
-| Recall     | 99.84     |
-| F1-Score   | 99.84     |
-
-### Feature Importance
-The top five features identified by the model are:
-- **PacketLengthMode**: 0.0998
-- **DestinationIP**: 0.0055
-- **SourceIP**: 0.0034
-- **DestinationPort**: 0.0028
-- **SourcePort**: 0.0025
+3. **Download Dataset**:
+- Obtain CIRA-CIC-DoHBrw-2020 dataset
+- Place in `data/raw/` directory
 
 ---
 
-## Contributing
-Contributions are welcome! If you'd like to contribute, please follow these steps:
+## Dataset 📊
+### Composition
+| Traffic Type        | Samples  | Percentage |
+|--------------------|---------|------------|
+| Benign            | 114,699 | 78.55%     |
+| Iodine (Malicious)| 5,704   | 3.90%      |
+| DNS2TCP           | 21,003  | 14.39%     |
+| DNScat2           | 4,503   | 3.08%      |
 
-1. Fork the repository.
-2. Create a new branch for your feature or bug fix.
-3. Commit your changes and push to the branch.
-4. Submit a pull request.
+### Preprocessing Pipeline
+- **Missing Values**: Mean imputation
+- **Normalization**: StandardScaler
+- **Feature Engineering**:
+  - *Temporal*: Packet time variance, response time median
+  - *Spatial*: Flow bytes sent, packet length mode
+  - *Composite*: SourcePort-PacketLengthMode Mean
 
 ---
 
-## License
-This project is licensed under the MIT License. See the LICENSE file for details.
+## Methodology 🧠
+### Hybrid Detection Framework
+```python
+# Pseudo-Code Overview
+def hybrid_detection():
+    initialize_population()
+    for generation in generations:
+        evaluate_fitness()
+        apply_penalty(lambda_g)  # λ_g = λ_0(1 - g/G)
+        perform_selection()
+        crossover_and_mutate()
+    return optimal_features()
+
+train_random_forest(optimal_features)
+```
+
+### Key Components
+| Component           | Configuration               |
+|--------------------|---------------------------|
+| Random Forest     | 50 trees, max_depth=10, sqrt features |
+| Genetic Algorithm | Population=100, Generations=20 |
+| Fitness Function  | F1-score - λ(feature_count/total) |
+
+![GA Flowchart](https://github.com/MahmoudSamour/DNS-tunnelling-using-random-forest-and-genetic-algorithm/blob/main/images/penalty_based_ga_flowchart.png)  
+*Figure 2: Penalty-based Genetic Algorithm flowchart.*
 
 ---
 
-## Citation
-If you use this work in your research, please cite it as follows:
+## Usage 🛠️
+### Feature Optimization:
+```bash
+python optimize_features.py --population 100 --generations 20
+```
+### Train Final Model:
+```bash
+python train_model.py --estimators 50 --max_depth 10
+```
+### Evaluate Performance:
+```bash
+python evaluate.py --test_data data/processed/test.csv
+```
 
+---
+
+## Results 📈
+### Performance Metrics
+| Metric     | Our Model | RF Baseline | DeepFM [1] |
+|-----------|----------|------------|-----------|
+| Accuracy  | 99.84%   | 98.20%     | 99.50%    |
+| F1-Score  | 99.84%   | 97.50%     | 99.40%    |
+| Features  | 18       | 42         | 35        |
+
+---
+
+## Citation 📝
+If you use this work, please cite:
 ```bibtex
 @article{sammour2024dns,
   title={Enhanced Detection of DNS Tunneling: Leveraging Random Forest and Genetic Algorithm for Improved Security},
   author={Sammour, Mahmoud and Othman, Mohd Fairuz Iskandar and Bhais, Omar},
   journal={IEEE Access},
+  year={2024},
+  doi={10.1109/ACCESS.2024.0429000}
 }
 ```
 
-For any questions or feedback, please contact **mahmoud.samour@gmail.com**.
+---
+
+## Team 👥
+| Researcher                     | Contribution             |
+|--------------------------------|-------------------------|
+| Mahmoud Sammour                | Methodology, Implementation |
+| Mohd Fairuz Iskandar Othman    | Supervision, Validation |
+| Omar A A Bhais                 | Data Preprocessing, Testing |
+| Aslinda Hassan             | Co-Supervisor, Research Guidance |
+
