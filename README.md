@@ -54,12 +54,7 @@ To set up the project, follow these steps:
    cd DNS-tunnelling-using-random-forest-and-genetic-algorithm
    ```
 
-2. **Install dependencies**:
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-3. **Download the dataset**:
+2. **Download the dataset**:
    - The dataset is available from the Canadian Institute for Cybersecurity (CIC).
    - Place the dataset files in the `DoHBrw-2020` directory.
 
