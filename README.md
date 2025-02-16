@@ -3,7 +3,7 @@
 ![Methodology Flowchart](https://github.com/MahmoudSamour/DNS-tunnelling-using-random-forest-and-genetic-algorithm/blob/main/images/flowchart_methodology.png)  
 *Figure 1: Flowchart of the proposed methodology combining Random Forest and Genetic Algorithms.*
 
-[![DOI](https://img.shields.io/badge/DOI-10.1109%2FACCESS.2024.0429000-blue)](https://doi.org/10.1109/ACCESS.2024.0429000)
+[![DOI](https://img.shields.io/badge/DOI-10.1109%2FACCESS.2024.0429000-blue)](https://doi.org/10.0000/ACCESS.00000.0000000)
 [![Python 3.8+](https://img.shields.io/badge/Python-3.8%2B-blue)](https://www.python.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
@@ -91,22 +91,6 @@ train_random_forest(optimal_features)
 
 ---
 
-## Usage 🛠️
-### Feature Optimization:
-```bash
-python optimize_features.py --population 100 --generations 20
-```
-### Train Final Model:
-```bash
-python train_model.py --estimators 50 --max_depth 10
-```
-### Evaluate Performance:
-```bash
-python evaluate.py --test_data data/processed/test.csv
-```
-
----
-
 ## Results 📈
 ### Performance Metrics
 | Metric     | Our Model | RF Baseline | DeepFM [1] |
@@ -124,8 +108,6 @@ If you use this work, please cite:
   title={Enhanced Detection of DNS Tunneling: Leveraging Random Forest and Genetic Algorithm for Improved Security},
   author={Sammour, Mahmoud and Othman, Mohd Fairuz Iskandar and Bhais, Omar},
   journal={IEEE Access},
-  year={2024},
-  doi={10.1109/ACCESS.2024.0429000}
 }
 ```
 
