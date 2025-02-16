@@ -60,33 +60,6 @@ To set up the project, follow these steps:
 
 ---
 
-## Usage
-
-### Preprocess the data
-Run the preprocessing script to clean and prepare the dataset:
-```bash
-python preprocess.py
-```
-
-### Train the model
-Train the Random Forest classifier with the Genetic Algorithm for feature selection:
-```bash
-python train.py
-```
-
-### Evaluate the model
-Evaluate the model on the test set and generate performance metrics:
-```bash
-python evaluate.py
-```
-
-### Visualize results
-Generate visualizations for feature importance and convergence plots:
-```bash
-python visualize.py
-```
-
----
 
 ## Results
 The proposed method achieves the following performance metrics:
