@@ -1,0 +1,21 @@
+Benchmark results on training data 
+Number of mislabeled points out of a total 437725 points: 1735
+Accuracy is 99.6%
+Precision = 99.62%
+Recall = 99.6%
+F-score = 99.61%
+
+
+Benchmark results on Testing data 
+Number of mislabeled points out of a total 583635 points: 2758
+Accuracy is 99.53%
+Precision = 99.54%
+Recall = 99.53%
+F-score = 99.53%
+
+Benchmark results on Validation data 
+Number of mislabeled points out of a total 145909 points: 686
+Accuracy is 99.53%
+Precision = 99.55%
+Recall = 99.53%
+F-score = 99.53%

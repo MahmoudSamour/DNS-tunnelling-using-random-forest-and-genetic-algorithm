@@ -1,0 +1,72 @@
+🧪 Running experiments for Sphere...
+  -> Algorithm: GA
+  -> Algorithm: PPS-GA
+  -> Algorithm: RLCGWO
+  -> Algorithm: EnhancedRLGWO
+  -> Algorithm: DE
+  -> Algorithm: PSO
+Stopping search: Swarm best objective change less than 1e-08
+Stopping search: Swarm best objective change less than 1e-08
+Stopping search: Swarm best objective change less than 1e-08
+Stopping search: maximum iterations reached --> 100
+Stopping search: maximum iterations reached --> 100
+🧪 Running experiments for Rastrigin...
+  -> Algorithm: GA
+  -> Algorithm: PPS-GA
+  -> Algorithm: RLCGWO
+  -> Algorithm: EnhancedRLGWO
+  -> Algorithm: DE
+  -> Algorithm: PSO
+Stopping search: maximum iterations reached --> 100
+Stopping search: maximum iterations reached --> 100
+Stopping search: maximum iterations reached --> 100
+Stopping search: maximum iterations reached --> 100
+Stopping search: Swarm best objective change less than 1e-08
+🧪 Running experiments for Rosenbrock...
+  -> Algorithm: GA
+  -> Algorithm: PPS-GA
+  -> Algorithm: RLCGWO
+  -> Algorithm: EnhancedRLGWO
+  -> Algorithm: DE
+  -> Algorithm: PSO
+Stopping search: maximum iterations reached --> 100
+Stopping search: maximum iterations reached --> 100
+Stopping search: maximum iterations reached --> 100
+Stopping search: maximum iterations reached --> 100
+Stopping search: maximum iterations reached --> 100
+🧪 Running experiments for Ackley...
+  -> Algorithm: GA
+  -> Algorithm: PPS-GA
+  -> Algorithm: RLCGWO
+  -> Algorithm: EnhancedRLGWO
+  -> Algorithm: DE
+  -> Algorithm: PSO
+Stopping search: Swarm best objective change less than 1e-08
+Stopping search: maximum iterations reached --> 100
+Stopping search: maximum iterations reached --> 100
+Stopping search: maximum iterations reached --> 100
+Stopping search: Swarm best objective change less than 1e-08
+🧪 Running experiments for Griewank...
+  -> Algorithm: GA
+  -> Algorithm: PPS-GA
+  -> Algorithm: RLCGWO
+  -> Algorithm: EnhancedRLGWO
+  -> Algorithm: DE
+  -> Algorithm: PSO
+Stopping search: maximum iterations reached --> 100
+Stopping search: Swarm best objective change less than 1e-08
+Stopping search: maximum iterations reached --> 100
+Stopping search: Swarm best objective change less than 1e-08
+Stopping search: maximum iterations reached --> 100
+🧪 Running experiments for Michalewicz...
+  -> Algorithm: GA
+  -> Algorithm: PPS-GA
+  -> Algorithm: RLCGWO
+  -> Algorithm: EnhancedRLGWO
+  -> Algorithm: DE
+  -> Algorithm: PSO
+Stopping search: Swarm best objective change less than 1e-08
+Stopping search: Swarm best objective change less than 1e-08
+Stopping search: maximum iterations reached --> 100
+Stopping search: maximum iterations reached --> 100
+Stopping search: maximum iterations reached --> 100
