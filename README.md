@@ -1,7 +1,12 @@
 # Enhanced Detection of DNS Tunneling: Leveraging Random Forest and Genetic Algorithm for Improved Security
 
 ![Methodology Flowchart](https://github.com/MahmoudSamour/DNS-tunnelling-using-random-forest-and-genetic-algorithm/blob/main/media/flowchart_methodology.png)  
-*Figure 1: Flowchart of the proposed methodology combining Random Forest and Genetic Algorithms.*
+*Figure 1: Flowchart of the proposed methodology .*
+
+
+![penalty_based_ga Flowchart](https://github.com/MahmoudSamour/DNS-tunnelling-using-random-forest-and-genetic-algorithm/blob/main/media/penalty_based_ga_flowchart.png)  
+*Figure 1: Flowchart of the proposed combining Random Forest and Genetic Algorithms.*
+
 
 [![DOI](https://img.shields.io/badge/DOI-10.1109%2FACCESS.2024.0429000-blue)](https://doi.org/10.0000/ACCESS.00000.0000000)
 [![Python 3.8+](https://img.shields.io/badge/Python-3.8%2B-blue)](https://www.python.org/)
