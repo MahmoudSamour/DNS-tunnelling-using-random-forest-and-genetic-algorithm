@@ -5,7 +5,7 @@
 
 
 ![penalty_based_ga Flowchart](https://github.com/MahmoudSamour/DNS-tunnelling-using-random-forest-and-genetic-algorithm/blob/main/media/penalty_based_ga_flowchart.png)  
-*Figure 1: Flowchart of the proposed combining Random Forest and Genetic Algorithms.*
+*Figure 2: Flowchart of the proposed combining Random Forest and Genetic Algorithms.*
 
 
 [![DOI](https://img.shields.io/badge/DOI-10.1109%2FACCESS.2024.0429000-blue)](https://doi.org/10.0000/ACCESS.00000.0000000)
