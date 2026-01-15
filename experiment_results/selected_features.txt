@@ -1,9 +1,10 @@
 SourcePort
 DestinationPort
+PacketLengthVariance
 PacketLengthStandardDeviation
+PacketLengthMedian
 PacketLengthMode
-PacketLengthSkewFromMedian
-PacketLengthSkewFromMode
+PacketTimeMean
+PacketTimeMode
 ResponseTimeTimeStandardDeviation
-ResponseTimeTimeMedian
-ResponseTimeTimeCoefficientofVariation
+ResponseTimeTimeMean
