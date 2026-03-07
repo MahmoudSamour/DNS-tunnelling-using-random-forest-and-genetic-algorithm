@@ -1,0 +1,924 @@
+
+%% IAENG_pub.tex 2010/08/30
+%% It is based on the bare_jrnl.tex V1.3 2007/01/11 by Michael Shell
+%% see http://www.michaelshell.org/
+%% for current contact information.
+%%
+%% This is a skeleton file demonstrating the use of IAENGtran.cls
+%% (requires IAENGtran.cls version 1.7 or later) with an IAENG journal/conference paper.
+%%
+%% Support sites:
+%% http://www.michaelshell.org/tex
+%% http://www.ctan.org/tex-archive/macros/latex/contrib/IEEEtran/
+
+% *** Authors should verify (and, if needed, correct) their LaTeX system  ***
+% *** with the testflow diagnostic prior to trusting their LaTeX platform ***
+% *** with production work. IAENG's font choices can trigger bugs that do  ***
+% *** not appear when using other class files.                            ***
+% The testflow support page is at:
+% http://www.michaelshell.org/tex/testflow/
+
+
+%%*************************************************************************
+%% Legal Notice:
+%% This code is offered as-is without any warranty either expressed or
+%% implied; without even the implied warranty of MERCHANTABILITY or
+%% FITNESS FOR A PARTICULAR PURPOSE!
+%% User assumes all risk.
+%% In no event shall IAENG or any contributor to this code be liable for
+%% any damages or losses, including, but not limited to, incidental,
+%% consequential, or any other damages, resulting from the use or misuse
+%% of any information contained here.
+%%
+%% All comments are the opinions of their respective authors and are not
+%% necessarily endorsed by the IAENG.
+%%
+%% This work is distributed under the LaTeX Project Public License (LPPL)
+%% ( http://www.latex-project.org/ ) version 1.3, and may be freely used,
+%% distributed and modified. A copy of the LPPL, version 1.3, is included
+%% in the base LaTeX documentation of all distributions of LaTeX released
+%% 2003/12/01 or later.
+%% Retain all contribution notices and credits.
+%% ** Modified files should be clearly indicated as such, including  **
+%% ** renaming them and changing author support contact information. **
+%%
+%%*************************************************************************
+
+% Note that the a4paper option is mainly intended so that authors in
+% countries using A4 can easily print to A4 and see how their papers will
+% look in print - the typesetting of the document will not typically be
+% affected with changes in paper size (but the bottom and side margins will).
+% Use the testflow package mentioned above to verify correct handling of
+% both paper sizes by the user's LaTeX system.
+%
+% Also note that the "draftcls" or "draftclsnofoot", not "draft", option
+% should be used if it is desired that the figures are to be displayed in
+% draft mode.
+%
+\documentclass[journal]{IAENGtran}
+%
+% If IAENGtran.cls has not been installed into the LaTeX system files,
+% manually specify the path to it like:
+% \documentclass[journal]{../sty/IAENGtran}
+
+
+
+
+
+% Some very useful LaTeX packages include:
+% (uncomment the ones you want to load)
+
+
+% *** MISC UTILITY PACKAGES ***
+%
+%\usepackage{ifpdf}
+% Heiko Oberdiek's ifpdf.sty is very useful if you need conditional
+% compilation based on whether the output is pdf or dvi.
+% usage:
+% \ifpdf
+%   % pdf code
+% \else
+%   % dvi code
+% \fi
+% The latest version of ifpdf.sty can be obtained from:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/oberdiek/
+% Also, note that IAENGtran.cls V1.7 and later provides a builtin
+% \ifCLASSINFOpdf conditional that works the same way.
+% When switching from latex to pdflatex and vice-versa, the compiler may
+% have to be run twice to clear warning/error messages.
+
+
+
+
+
+
+% *** CITATION PACKAGES ***
+%
+%\usepackage{cite}
+% cite.sty was written by Donald Arseneau
+% V1.6 and later of IAENGtran pre-defines the format of the cite.sty package
+% \cite{} output to follow that of IAENG. Loading the cite package will
+% result in citation numbers being automatically sorted and properly
+% "compressed/ranged". e.g., [1], [9], [2], [7], [5], [6] without using
+% cite.sty will become [1], [2], [5]--[7], [9] using cite.sty. cite.sty's
+% \cite will automatically add leading space, if needed. Use cite.sty's
+% noadjust option (cite.sty V3.8 and later) if you want to turn this off.
+% cite.sty is already installed on most LaTeX systems. Be sure and use
+% version 4.0 (2003-05-27) and later if using hyperref.sty. cite.sty does
+% not currently provide for hyperlinked citations.
+% The latest version can be obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/cite/
+% The documentation is contained in the cite.sty file itself.
+
+
+
+
+
+
+% *** GRAPHICS RELATED PACKAGES ***
+%
+\ifCLASSINFOpdf
+   \usepackage[pdftex]{graphicx}
+  % declare the path(s) where your graphic files are
+  % \graphicspath{{../pdf/}{../jpeg/}}
+  % and their extensions so you won't have to specify these with
+  % every instance of \includegraphics
+   \DeclareGraphicsExtensions{.pdf,.jpeg,.png}
+\else
+  % or other class option (dvipsone, dvipdf, if not using dvips). graphicx
+  % will default to the driver specified in the system graphics.cfg if no
+  % driver is specified.
+   \usepackage[dvips]{graphicx}
+  % declare the path(s) where your graphic files are
+  % \graphicspath{{../eps/}}
+  % and their extensions so you won't have to specify these with
+  % every instance of \includegraphics
+   \DeclareGraphicsExtensions{.eps}
+\fi
+% graphicx was written by David Carlisle and Sebastian Rahtz. It is
+% required if you want graphics, photos, etc. graphicx.sty is already
+% installed on most LaTeX systems. The latest version and documentation can
+% be obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/required/graphics/
+% Another good source of documentation is "Using Imported Graphics in
+% LaTeX2e" by Keith Reckdahl which can be found as epslatex.ps or
+% epslatex.pdf at: http://www.ctan.org/tex-archive/info/
+%
+% latex, and pdflatex in dvi mode, support graphics in encapsulated
+% postscript (.eps) format. pdflatex in pdf mode supports graphics
+% in .pdf, .jpeg, .png and .mps (metapost) formats. Users should ensure
+% that all non-photo figures use a vector format (.eps, .pdf, .mps) and
+% not a bitmapped formats (.jpeg, .png). IAENG frowns on bitmapped formats
+% which can result in "jaggedy"/blurry rendering of lines and letters as
+% well as large increases in file sizes.
+%
+% You can find documentation about the pdfTeX application at:
+% http://www.tug.org/applications/pdftex
+
+
+
+
+
+% *** MATH PACKAGES ***
+%
+%\usepackage[cmex10]{amsmath}
+% A popular package from the American Mathematical Society that provides
+% many useful and powerful commands for dealing with mathematics. If using
+% it, be sure to load this package with the cmex10 option to ensure that
+% only type 1 fonts will utilized at all point sizes. Without this option,
+% it is possible that some math symbols, particularly those within
+% footnotes, will be rendered in bitmap form which will result in a
+% document that can not be IAENG compliant!
+%
+% Also, note that the amsmath package sets \interdisplaylinepenalty to 10000
+% thus preventing page breaks from occurring within multiline equations. Use:
+%\interdisplaylinepenalty=2500
+% after loading amsmath to restore such page breaks as IAENGtran.cls normally
+% does. amsmath.sty is already installed on most LaTeX systems. The latest
+% version and documentation can be obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/required/amslatex/math/
+
+
+
+
+
+% *** SPECIALIZED LIST PACKAGES ***
+%
+%\usepackage{algorithmic}
+% algorithmic.sty was written by Peter Williams and Rogerio Brito.
+% This package provides an algorithmic environment for describing algorithms.
+% You can use the algorithmic environment in-text or within a figure
+% environment to provide for a floating algorithm. Do NOT use the algorithm
+% floating environment provided by algorithm.sty (by the same authors) or
+% algorithm2e.sty (by Christophe Fiorio) as IAENG does not use dedicated
+% algorithm float types and packages that provide these will not provide
+% correct IAENG style captions. The latest version and documentation of
+% algorithmic.sty can be obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/algorithms/
+% There is also a support site at:
+% http://algorithms.berlios.de/index.html
+% Also of interest may be the (relatively newer and more customizable)
+% algorithmicx.sty package by Szasz Janos:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/algorithmicx/
+
+
+
+
+% *** ALIGNMENT PACKAGES ***
+%
+%\usepackage{array}
+% Frank Mittelbach's and David Carlisle's array.sty patches and improves
+% the standard LaTeX2e array and tabular environments to provide better
+% appearance and additional user controls. As the default LaTeX2e table
+% generation code is lacking to the point of almost being broken with
+% respect to the quality of the end results, all users are strongly
+% advised to use an enhanced (at the very least that provided by array.sty)
+% set of table tools. array.sty is already installed on most systems. The
+% latest version and documentation can be obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/required/tools/
+
+
+%\usepackage{mdwmath}
+%\usepackage{mdwtab}
+% Also highly recommended is Mark Wooding's extremely powerful MDW tools,
+% especially mdwmath.sty and mdwtab.sty which are used to format equations
+% and tables, respectively. The MDWtools set is already installed on most
+% LaTeX systems. The lastest version and documentation is available at:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/mdwtools/
+
+
+% IAENGtran contains the IAENGeqnarray family of commands that can be used to
+% generate multiline equations as well as matrices, tables, etc., of high
+% quality.
+
+
+%\usepackage{eqparbox}
+% Also of notable interest is Scott Pakin's eqparbox package for creating
+% (automatically sized) equal width boxes - aka "natural width parboxes".
+% Available at:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/eqparbox/
+
+
+
+
+
+% *** SUBFIGURE PACKAGES ***
+%\usepackage[tight,footnotesize]{subfigure}
+% subfigure.sty was written by Steven Douglas Cochran. This package makes it
+% easy to put subfigures in your figures. e.g., "Figure 1a and 1b". For IAENG
+% work, it is a good idea to load it with the tight package option to reduce
+% the amount of white space around the subfigures. subfigure.sty is already
+% installed on most LaTeX systems. The latest version and documentation can
+% be obtained at:
+% http://www.ctan.org/tex-archive/obsolete/macros/latex/contrib/subfigure/
+% subfigure.sty has been superceeded by subfig.sty.
+
+
+
+%\usepackage[caption=false]{caption}
+%\usepackage[font=footnotesize]{subfig}
+% subfig.sty, also written by Steven Douglas Cochran, is the modern
+% replacement for subfigure.sty. However, subfig.sty requires and
+% automatically loads Axel Sommerfeldt's caption.sty which will override
+% IAENGtran.cls handling of captions and this will result in nonIAENG style
+% figure/table captions. To prevent this problem, be sure and preload
+% caption.sty with its "caption=false" package option. This is will preserve
+% IAENGtran.cls handing of captions. Version 1.3 (2005/06/28) and later
+% (recommended due to many improvements over 1.2) of subfig.sty supports
+% the caption=false option directly:
+%\usepackage[caption=false,font=footnotesize]{subfig}
+%
+% The latest version and documentation can be obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/subfig/
+% The latest version and documentation of caption.sty can be obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/caption/
+
+
+
+
+% *** FLOAT PACKAGES ***
+%
+%\usepackage{fixltx2e}
+% fixltx2e, the successor to the earlier fix2col.sty, was written by
+% Frank Mittelbach and David Carlisle. This package corrects a few problems
+% in the LaTeX2e kernel, the most notable of which is that in current
+% LaTeX2e releases, the ordering of single and double column floats is not
+% guaranteed to be preserved. Thus, an unpatched LaTeX2e can allow a
+% single column figure to be placed prior to an earlier double column
+% figure. The latest version and documentation can be found at:
+% http://www.ctan.org/tex-archive/macros/latex/base/
+
+
+
+%\usepackage{stfloats}
+% stfloats.sty was written by Sigitas Tolusis. This package gives LaTeX2e
+% the ability to do double column floats at the bottom of the page as well
+% as the top. (e.g., "\begin{figure*}[!b]" is not normally possible in
+% LaTeX2e). It also provides a command:
+%\fnbelowfloat
+% to enable the placement of footnotes below bottom floats (the standard
+% LaTeX2e kernel puts them above bottom floats). This is an invasive package
+% which rewrites many portions of the LaTeX2e float routines. It may not work
+% with other packages that modify the LaTeX2e float routines. The latest
+% version and documentation can be obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/sttools/
+% Documentation is contained in the stfloats.sty comments as well as in the
+% presfull.pdf file. Do not use the stfloats baselinefloat ability as IAENG
+% does not allow \baselineskip to stretch. Authors submitting work to the
+% IAENG should note that IAENG rarely uses double column equations and
+% that authors should try to avoid such use. Do not be tempted to use the
+% cuted.sty or midfloat.sty packages (also by Sigitas Tolusis) as IAENG does
+% not format its papers in such ways.
+
+
+%\ifCLASSOPTIONcaptionsoff
+%  \usepackage[nomarkers]{endfloat}
+% \let\MYoriglatexcaption\caption
+% \renewcommand{\caption}[2][\relax]{\MYoriglatexcaption[#2]{#2}}
+%\fi
+% endfloat.sty was written by James Darrell McCauley and Jeff Goldberg.
+% This package may be useful when used in conjunction with IAENGtran.cls'
+% captionsoff option. Some IAENG journals/societies require that submissions
+% have lists of figures/tables at the end of the paper and that
+% figures/tables without any captions are placed on a page by themselves at
+% the end of the document. If needed, the draftcls IAENGtran class option or
+% \CLASSINPUTbaselinestretch interface can be used to increase the line
+% spacing as well. Be sure and use the nomarkers option of endfloat to
+% prevent endfloat from "marking" where the figures would have been placed
+% in the text. The two hack lines of code above are a slight modification of
+% that suggested by in the endfloat docs (section 8.3.1) to ensure that
+% the full captions always appear in the list of figures/tables - even if
+% the user used the short optional argument of \caption[]{}.
+% IAENG papers do not typically make use of \caption[]'s optional argument,
+% so this should not be an issue. A similar trick can be used to disable
+% captions of packages such as subfig.sty that lack options to turn off
+% the subcaptions:
+% For subfig.sty:
+% \let\MYorigsubfloat\subfloat
+% \renewcommand{\subfloat}[2][\relax]{\MYorigsubfloat[]{#2}}
+% For subfigure.sty:
+% \let\MYorigsubfigure\subfigure
+% \renewcommand{\subfigure}[2][\relax]{\MYorigsubfigure[]{#2}}
+% However, the above trick will not work if both optional arguments of
+% the \subfloat/subfig command are used. Furthermore, there needs to be a
+% description of each subfigure *somewhere* and endfloat does not add
+% subfigure captions to its list of figures. Thus, the best approach is to
+% avoid the use of subfigure captions (many IAENG journals avoid them anyway)
+% and instead reference/explain all the subfigures within the main caption.
+% The latest version of endfloat.sty and its documentation can obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/endfloat/
+%
+% The IAENGtran \ifCLASSOPTIONcaptionsoff conditional can also be used
+% later in the document, say, to conditionally put the References on a
+% page by themselves.
+
+
+
+
+
+% *** PDF, URL AND HYPERLINK PACKAGES ***
+%
+%\usepackage{url}
+% url.sty was written by Donald Arseneau. It provides better support for
+% handling and breaking URLs. url.sty is already installed on most LaTeX
+% systems. The latest version can be obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/misc/
+% Read the url.sty source comments for usage information. Basically,
+% \url{my_url_here}.
+
+
+
+
+
+% *** Do not adjust lengths that control margins, column widths, etc. ***
+% *** Do not use packages that alter fonts (such as pslatex).         ***
+% There should be no need to do such things with IAENGtran.cls V1.6 and later.
+% (Unless specifically asked to do so by the journal or conference you plan
+% to submit to, of course. )
+
+
+% correct bad hyphenation here
+% \hyphenation{op-tical net-works semi-conduc-tor}
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{url}
+% \usepackage{float} % <-- Optional: This may conflict, try compiling without it first.
+\usepackage{array}  
+\usepackage{tabularx}
+\usepackage{booktabs} 
+% \usepackage{rotating} % <-- Optional: Try compiling without these first.
+% \usepackage{lscape}
+% \usepackage{pdflscape}
+\usepackage{adjustbox} 
+\usepackage{ltablex}
+\usepackage{bm}
+
+\begin{document}
+%
+% paper title
+% can use linebreaks \\ within to get better formatting as desired
+\title{Enhanced detection of DNS tunneling: Leveraging random forest and genetic algorithm}
+%
+%
+% author names and IAENG memberships
+% note positions of commas and nonbreaking spaces ( ~ ) LaTeX will not break
+% a structure at a ~ so this keeps an author's name from being broken across
+% two lines.
+% use \thanks{} to gain access to the first footnote area
+% a separate \thanks must be used for each paragraph as LaTeX2e's \thanks
+% was not built to handle multiple paragraphs
+%
+
+\author{Mahmoud~Sammour,
+        Mohd~Fairuz~Iskandar~Othman,
+        Aslinda~Hassan,
+        Omar~Bhais,
+        and~M.~H.~Ahmad~Hijazi% <-this % stops a space
+\thanks{Manuscript received [Date], 2025; revised [Date], 2025. (Fill in your submission dates here.)}% <-this % stops a space
+\thanks{M. Sammour, M. F. I. Othman, A. Hassan, and O. Bhais are with the Faculty of Information and Communication Technology, Universiti Teknikal Malaysia Melaka (UTeM), Melaka, Malaysia.}% <-this % stops a space
+\thanks{M. H. Ahmad Hijazi is with the Faculty of Computing and Informatics, Universiti Malaysia Sabah, Kota Kinabalu 88400, Sabah, Malaysia. Email: hanafi@ums.edu.my}% <-this % stops a space
+\thanks{Corresponding author: mohdfairuz@utem.edu.my.}% <-this % stops a space
+}
+
+
+% note the % following the last \IAENGmembership and also \thanks -
+% these prevent an unwanted space from occurring between the last author name
+% and the end of the author line. i.e., if you had this:
+%
+% \author{....lastname \thanks{...} \thanks{...} }
+%                     ^------------^------------^----Do not want these spaces!
+%
+% a space would be appended to the last name and could cause every name on that
+% line to be shifted left slightly. This is one of those "LaTeX things". For
+% instance, "\textbf{A} \textbf{B}" will typeset as "A B" not "AB". To get
+% "AB" then you have to do: "\textbf{A}\textbf{B}"
+% \thanks is no different in this regard, so shield the last } of each \thanks
+% that ends a line with a % and do not let a space in before the next \thanks.
+% Spaces after \IAENGmembership other than the last one are OK (and needed) as
+% you are supposed to have spaces between the names. For what it is worth,
+% this is a minor point as most people would not even notice if the said evil
+% space somehow managed to creep in.
+
+
+
+% The paper headers
+%\markboth{}%
+%{Shell \MakeLowercase{\textit{et al.}}:}
+% The only time the second header will appear is for the odd numbered pages
+% after the title page when using the twoside option.
+%
+% *** Note that you probably will NOT want to include the author's ***
+% *** name in the headers of peer review papers.                   ***
+% You can use \ifCLASSOPTIONpeerreview for conditional compilation here if
+% you desire.
+
+
+
+
+% If you want to put a publisher's ID mark on the page you can do it like
+% this:
+%\IAENGpubid{0000--0000/00\$00.00~\copyright~2007 IAENG}
+% Remember, if you use this you must call \IAENGpubidadjcol in the second
+% column for its text to clear the IAENGpubid mark.
+
+
+
+% use for special paper notices
+%\IAENGspecialpapernotice{(Invited Paper)}
+
+
+
+
+% make the title area
+\maketitle
+
+\pagestyle{empty}
+\thispagestyle{empty}
+
+
+\begin{abstract}
+Domain Name System (DNS) tunneling remains a persistent threat to network security, as it exploits the ubiquity of the DNS protocol to facilitate unauthorized communication, exfiltrate sensitive data, and bypass traditional firewall protections. This paper presents an enhanced detection methodology that integrates Random Forest (RF) classifiers with a novel penalty-based Genetic Algorithm (GA) for optimized feature selection. By dynamically balancing classification accuracy and feature subset parsimony, the proposed hybrid approach effectively identifies malicious patterns within both standard and encrypted DNS traffic. Experimental evaluations conducted on benchmark datasets containing benign and malicious traffic (including Iodine, DNS2TCP, and DNScat2) demonstrate that the proposed method achieves a superior detection accuracy and F1-score of 99.84\%. The results underscore the robustness and computational efficiency of the framework, making it a viable solution for real-time network security monitoring in complex, high-dimensional data environments.
+\end{abstract}
+% IAENGtran.cls defaults to using nonbold math in the Abstract.
+% This preserves the distinction between vectors and scalars. However,
+% if the journal you are submitting to favors bold math in the abstract,
+% then you can use LaTeX's standard command \boldmath at the very start
+% of the abstract to achieve this. Many IAENG journals frown on math
+% in the abstract anyway.
+
+% Note that keywords are not normally used for peerreview papers.
+\begin{IAENGkeywords}
+DNS tunneling, encrypted traffic, feature engineering, genetic algorithm, hybrid detection, malicious traffic, machine learning, optimization, random forest, security, traffic analysis.
+\end{IAENGkeywords}
+
+
+
+
+
+
+% For peer review papers, you can put extra information on the cover
+% page as needed:
+% \ifCLASSOPTIONpeerreview
+% \begin{center} \bfseries EDICS Category: 3-BBND \end{center}
+% \fi
+%
+% For peerreview papers, this IAENGtran command inserts a page break and
+% creates the second title. It will be ignored for other modes.
+\IAENGpeerreviewmaketitle
+
+
+\section{Introduction}
+
+\PARstart{D}{omain} Name System (DNS) is a foundational component of global internet infrastructure, serving as a translator by converting human-readable domain names into numeric IP addresses \cite{hynek2022summary}. However, the critical role and near-universal usage of DNS across networks make it a prime target for malicious exploitation \cite{afek2025pops, li2025harnessing}. As network security paradigms evolve toward next-generation 6G and Industry 4.0 environments, the complexity of protecting these communication protocols has increased significantly \cite{li2025harnessing}.
+
+
+
+DNS tunneling is a sophisticated attack vector that encapsulates malicious data within standard DNS queries and responses. By mimicking legitimate traffic, attackers can facilitate unauthorized command-and-control (C2) communication, exfiltrate sensitive data, and bypass enterprise firewall protections \cite{jerabek2023dns, gursoy2024dns}. Detecting such activities is inherently difficult because the traffic often adheres to protocol specifications. Traditional methods, such as Deep Packet Inspection (DPI), are increasingly ineffective due to high computational overhead and the widespread adoption of encryption protocols like DNS over HTTPS (DoH), which mask the payload from conventional inspection \cite{boonyopakorn2024malicious, alzighaibi2023detection}.
+
+Machine learning (ML) has emerged as a robust solution for uncovering hidden threats within large volumes of network traffic \cite{mahmood2024optimizing}. Recent technical assessments in IAENG publications have highlighted the efficacy of specific classifiers, such as Random Forest (RF), in managing high-dimensional data noise while maintaining superior classification performance compared to traditional models like SVM or Logistic Regression \cite{elkhadir2024enhancing}. However, the performance of these models depends heavily on optimal feature selection. Improper feature subsets can lead to overfitting or high inference latency, which is detrimental to real-time security monitoring \cite{liu2025intrusion}.
+
+
+
+To address these challenges, this study proposes an enhanced detection framework leveraging Random Forest classifiers integrated with a penalty-based Genetic Algorithm (GA). While GA has been established as a standard for exploring complex feature spaces and avoiding local optima \cite{alemu2025genetic}, this work introduces a specialized adaptive penalty mechanism. This mechanism dynamically balances detection accuracy with feature parsimony to ensure a lightweight and efficient detection process suitable for resource-constrained environments \cite{liu2025intrusion}.
+
+The innovations introduced in this work include:
+\begin{itemize}
+    \item \textbf{Adaptive Penalty Mechanism:} Unlike static penalty terms, our dynamically adjusted parameter $\lambda_g = \lambda_0(1-\frac{g}{G})$ applies increasing evolutionary pressure to prioritize feature reduction without sacrificing model accuracy as the generations progress.
+    
+    \item \textbf{Encrypted Traffic Specialization:} Our feature engineering targets specific spatial and temporal characteristics—such as request/response size distributions and communication frequency—that remain observable even in encrypted DoH traffic \cite{gursoy2024dns}.
+    
+    \item \textbf{Composite Fitness Function:} We utilize a novel metric that combines the weighted F1-score with a feature count penalty, specifically optimized for the unique patterns of DNS tunneling rather than general-purpose classification.
+\end{itemize}
+
+\subsection{Key Contributions}
+
+This study makes the following key contributions:
+
+\begin{enumerate}
+    \item \textbf{Novel Feature Engineering:} We propose an enhanced extraction method focusing on temporal and spatial traffic characteristics, which is essential for detecting sophisticated tunneling tools like Iodine and DNScat2 \cite{casanova2023malicious}.
+    
+    \item \textbf{Hybrid Optimization Framework:} By integrating RF with a novel penalty-based GA, we provide a framework that identifies optimal feature combinations from massive datasets, reducing computational load while maintaining a 99.84\% F1-score \cite{singh2025optimizing, bozkurt2024new}.
+    
+    \item \textbf{Real-Time Feasibility Benchmarking:} The proposed model is rigorously evaluated for inference latency, demonstrating suitability for real-time monitoring in high-throughput network gateways \cite{akem2025real, liu2025intrusion}.
+\end{enumerate}
+
+The remainder of this paper is organized as follows: Section II discusses related work and the state-of-the-art in DNS security; Section III details the proposed hybrid methodology; Section IV presents the experimental results and comparative analysis; and Section V concludes the paper with future research directions.
+
+\section{Related Work}
+
+Domain Name System (DNS) tunneling remains a critical covert communication technique that exploits standard protocols to bypass traditional perimeter security \cite{hynek2022summary, jerabek2023dns}. Despite evolving defenses, it is still considered a complex challenge to resolve, particularly in dynamic network environments where protocol compliance is often assumed \cite{kim2025reinforcement}. By embedding malicious data within DNS queries and responses, attackers can facilitate unauthorized data exfiltration \cite{boonyopakorn2024malicious}, establish command-and-control (C2) channels \cite{casanova2023malicious}, and circumvent firewalls \cite{akem2025real}. Sophisticated encoding methods—including Base32, Base64, and hybrid schemes—are frequently employed to obfuscate these connections \cite{afek2025pops, bozkurt2024new}. The ubiquity of tools like Iodine, DNScat2, and DNS2TCP highlights the accessibility of these techniques for hiding malicious activities, making DNS a high-priority target for cybersecurity interventions \cite{gursoy2024dns, alsajri2024intrusion}.
+
+To address these threats, researchers have proposed diverse detection methodologies. Traditional techniques, such as payload and traffic analysis, focus on measuring entropy, packet size, and structural anomalies \cite{alzighaibi2023detection, singh2025optimizing}. For instance, \cite{bozkurt2024new} identified anomalies through high-frequency requests and unusual geographical distributions of DNS servers. While effective for unencrypted traffic, these methods often fail to detect tunnels encapsulated within encrypted protocols like DNS over HTTPS (DoH) \cite{gursoy2024dns}. Recent work published in IAENG journals has emphasized the need for "lightweight" schemes that maintain high performance without excessive computational overhead, a critical requirement for resource-constrained environments like Wireless Sensor Networks (WSNs) \cite{liu2025intrusion}.
+
+
+
+The widespread adoption of DoH, intended to enhance privacy, has created new vectors for attackers to evade detection mechanisms \cite{hynek2022summary}. Recent studies have reported critical risks, including side-channel attacks that exploit packet timing and size distributions \cite{kim2025reinforcement}, and downgrade attacks that force traffic into unencrypted channels \cite{afek2025pops}. Furthermore, as security paradigms shift toward next-generation 6G and Industry 4.0 environments, the complexity of protecting these communication protocols has increased, necessitating multidimensional assessment methods to ensure network resilience \cite{li2025harnessing}.
+
+Machine learning (ML) has emerged as a primary solution for monitoring DoH traffic and distinguishing malicious patterns from legitimate behavior \cite{alzighaibi2023detection}. Techniques such as Random Forest (RF) and Support Vector Machines (SVM) have demonstrated high efficacy in managing high-dimensional data noise \cite{elkhadir2024enhancing, aggarwal2024ensemble}. Furthermore, deep learning architectures like Long Short-Term Memory (LSTM) and Convolutional Neural Networks (CNN) have achieved high accuracy by analyzing temporal and spatial traffic characteristics \cite{bozkurt2024new, boonyopakorn2024malicious}.
+
+Genetic Algorithms (GA) have significantly improved these ML models by optimizing feature selection and hyperparameter tuning. By mimicking natural selection, GAs identify optimal feature subsets that maximize detection accuracy while minimizing dimensionality \cite{roopesh2024review, singh2025optimizing}. Recent hybrid models, such as GAKNN-SVM, have demonstrated that evolutionary optimization can drastically reduce false positives in complex detection tasks while remaining suitable for resource-constrained systems \cite{alemu2025genetic}. Additionally, integrating penalty mechanisms into GAs ensures feature parsimony, preventing overfitting and reducing inference latency in real-time monitoring systems \cite{alsajri2024intrusion, halim2021effective}.
+
+
+
+In reviewing the comparative performance of state-of-the-art methods (Table \ref{tab:state_of_art_comparison}), several trends emerge. While models like DeepFM and semi-supervised learners provide high accuracy, they often suffer from high training times or limited generalizability to new attack variations \cite{jha2024doh, nguyen2024semi}. Optimization algorithms like Pigeon-Inspired Optimization (PIO) have been introduced to refine detection, yet scalability remains a challenge in real-time environments \cite{abualghanam2024pigeon}. Our proposed framework addresses these gaps by combining an advanced Random Forest classifier with a novel penalty-based GA, ensuring a robust, lightweight solution specifically optimized for the unique patterns of DNS tunneling.
+
+\begin{table*}[htbp]
+\centering
+\caption{Comparison of State-of-the-Art DNS Tunneling Detection Methods}
+\label{tab:state_of_art_comparison}
+\renewcommand{\arraystretch}{1.5} 
+\setlength{\tabcolsep}{5pt} 
+\resizebox{\textwidth}{!}{ 
+\begin{tabular}{|p{2.5cm}|p{3cm}|p{3.5cm}|p{3.5cm}|p{3cm}|p{4cm}|} 
+\hline
+\textbf{Study} & \textbf{ML Techniques Used} & \textbf{Feature Selection and Engineering} & \textbf{Dataset} & \textbf{Performance Metrics} & \textbf{Limitations} \\ \hline
+
+Banadaki (2020) \cite{banadaki2020} & RF, DT, LR, KNN & Yes (Random Forest Importance) & CIRA-CIC-DoHBrw-2020 & Accuracy, Precision, Recall, F1-score & High computational cost for feature ranking. \\ \hline
+
+Singh et al. (2020) \cite{singh2020detecting} & RF, GB & Yes (Correlation-Based Selection) & CIRA-CIC-DoHBrw-2020 & Accuracy (99.79\%), Precision & Focuses on specific traffic patterns; limited generalizability. \\ \hline
+
+Bitton et al. (2019) \cite{bitton2019machine} & Naive Bayes, RF & No & Custom RDP Dataset & Accuracy, Detection Rate & Dataset focused on RDP traffic; limited to specific cases. \\ \hline
+
+Jha et al. (2024) \cite{jha2024doh} & DeepFM, SVM, RF, KNN & Yes (Feature Engineering on Packet Size and Timing) & Custom DNS-over-HTTPS Dataset & Accuracy (99.5\%), Recall & High training time for deep learning models. \\ \hline
+
+Nguyen et al. (2024) \cite{nguyen2024semi} & Semi-Supervised Learning & Yes (Statistical Feature Engineering) & Custom Labeled + Unlabeled DoH Dataset & Accuracy (98\%) & Limited generalization to new attack variations. \\ \hline
+
+Abualghanam et al. (2024) \cite{abualghanam2024pigeon} & Hybrid Model (PIO + ML) & Yes (Feature Selection via PIO Algorithm) & CIRA-CIC-DoHBrw-2020 & Accuracy (98.3\%) & High computational overhead. \\ \hline
+
+Alkasassbeh et al. (2024) \cite{alkasassbeh2024ml} & RF, ANN & Yes (Hybrid Feature Selection) & CIRA-CIC-DoHBrw-2020 & Accuracy (99.1\%), Recall & Scalability challenges in real-time environments. \\ \hline
+
+\textbf{Our Work (RF+GA)} & \textbf{RF + Genetic Algorithm} & \textbf{Yes (Penalty-Based GA)} & \textbf{CIRA-CIC-DoHBrw-2020} & \textbf{99.84\% F1-Score} & Requires empirical comparison with DL models. \\ \hline
+\end{tabular}}
+\end{table*}
+
+
+
+\section{Methodology}
+\label{sec:methodology}
+The proposed methodology integrates machine learning with evolutionary optimization to detect DNS tunneling in both encrypted and unencrypted traffic. Our system pipeline—illustrated in Figure~\ref{fig:overall_cycle}—comprises four primary stages: dataset preparation, feature preprocessing, Random Forest classification, and a penalty-based Genetic Algorithm (GA) for automated feature subset selection. All components are implemented using Python's \texttt{scikit-learn} and \texttt{DEAP} libraries to ensure computational efficiency and full reproducibility.
+
+
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.75\columnwidth]{overall_cycle.png}
+\caption{High-level overview of the proposed methodology cycle, from data collection to results analysis.}
+\label{fig:overall_cycle}
+\end{figure}
+
+\subsection{Dataset Preparation and Preprocessing}
+We utilize the \textit{CIRA-CIC-DoHBrw-2020} dataset, which provides a realistic benchmark for DNS over HTTPS (DoH) traffic analysis. The dataset includes:
+\begin{itemize}
+    \item \textbf{Benign traffic}: Legitimate DNS queries captured from Chrome and Firefox browsers during standard user activity.
+    \item \textbf{Malicious traffic}: Tunneling traffic generated via specialized tools including Iodine, DNS2TCP, and DNScat2.
+\end{itemize}
+
+The raw data undergoes a rigorous four-step preprocessing sequence to ensure data integrity and model stability:
+\begin{enumerate}
+    \item \textbf{Variance Filtering}: Removal of constant-value features (zero variance) that provide no discriminative information.
+    \item \textbf{Imputation}: Handling of missing values using the mean strategy to preserve the statistical distribution of the feature set.
+    \item \textbf{Meta-data Exclusion}: Exclusion of non-informative identifiers such as \texttt{TimeStamp}, \texttt{SourceIP}, and \texttt{DestinationIP} to prevent model bias toward specific network environments.
+    \item \textbf{Standardization}: Numerical features are standardized via \texttt{StandardScaler} to achieve a zero mean and unit variance, which is essential for uniform weight distribution in the classifier.
+\end{enumerate}
+The final processed dataset consists of over 1.1 million samples categorized into four classes: Benign (0), Iodine (1), DNS2TCP (2), and DNScat2 (3).
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\columnwidth]{data_preprocessing_pipeline.png}
+\caption{Detailed data preprocessing pipeline, illustrating the transition from raw network captures to standardized training inputs.}
+\label{fig:data_preprocessing}
+\end{figure}
+
+\subsection{Data Splitting Strategy}
+To ensure the generalizability of the results and address the reviewer's requirement for comprehensive evaluation, we adopt a strict three-way split:
+\begin{itemize}
+    \item \textbf{50\% Test set}: Completely held out and used only for final performance benchmarking.
+    \item \textbf{37.5\% Training set}: Used to train the Random Forest models during the GA evolutionary process.
+    \item \textbf{12.5\% Validation set}: Utilized exclusively by the GA to calculate fitness scores for each generation.
+\end{itemize}
+This conservative ratio prevents data leakage and ensures the feature selection process is robust against the high-throughput nature of real-world network traffic.
+
+\subsection{Random Forest Classifier}
+A Random Forest (RF) classifier configured with 50 estimators and a maximum depth of 10 serves as the core learner. RF was selected due to its inherent resilience to noise and its ability to handle high-dimensional network data without the overfitting risks common in deeper architectures. It functions as the evaluation engine within the GA loop to provide stable F1-score feedback.
+
+\subsection{Penalty-Based Genetic Algorithm}
+\label{subsec:math_formulation} 
+The Genetic Algorithm (GA) optimizes the feature space by evolving a population of binary vectors, where each bit represents the presence or absence of a feature. This metaheuristic approach is particularly effective for navigating the complex search spaces found in cybersecurity datasets \cite{bozkurt2024new, alemu2025genetic}.
+
+
+
+To prioritize "lightweight" detection suitable for real-time deployment \cite{liu2025intrusion}, we implement a composite fitness function $F(\mathbf{x})$:
+\[ F(\mathbf{x}) = \text{F1-score}(\mathbf{x}) - \lambda_g \cdot \left( \frac{\sum_{i=1}^{n} x_i}{n} \right) \]
+where $n$ is the total feature count, and $\lambda_g$ is an adaptive penalty term:
+\[ \lambda_g = \lambda_0 \left( 1 - \frac{g}{G} \right) \]
+This mechanism ensures that as generations ($g$) progress toward the limit ($G$), the algorithm exerts increasing pressure to reduce the feature count without sacrificing detection accuracy.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.6\columnwidth]{penalty_based_ga_flowchart.png}
+\caption{Flowchart of the Penalty-Based GA, illustrating the integration of the adaptive penalty mechanism into the fitness evaluation loop.}
+\label{fig:penalty_ga_flowchart}
+\end{figure}
+
+\subsubsection{Evolutionary Process}
+The GA execution follows these systematic steps:
+\begin{enumerate}
+    \item \textbf{Population Initialization}: Generation of $P$ random binary chromosomes.
+    \item \textbf{Fitness Evaluation}: Assessing individuals via the RF-calculated F1-score on the validation set, adjusted by the penalty term $\lambda_g$.
+    \item \textbf{Selection}: Fittest individuals are selected through tournament selection to ensure genetic diversity \cite{halim2021effective}.
+    \item \textbf{Genetic Modification}: Application of two-point crossover and bit-flip mutation to explore new regions of the feature space.
+    \item \textbf{Convergence}: Iterative refinement until maximum generations are reached, returning the global optimal feature subset.
+\end{enumerate}
+
+\subsubsection{Pseudocode}
+\begin{algorithmic}[1]
+\REQUIRE Processed Dataset $D$, population size $P$, max generations $G$
+\ENSURE Optimal feature subset $\mathbf{x}_{best}$
+\STATE Initialize population $\mathbf{x}_1, \mathbf{x}_2, \ldots, \mathbf{x}_P \sim \{0,1\}^n$
+\FOR{generation $g = 1$ to $G$}
+\STATE Calculate $\lambda_g = \lambda_0(1 - g/G)$
+\STATE $\text{Fitness}(\mathbf{x}) \gets \text{RF}_{F1}(\mathbf{x}) - \text{Penalty}(\lambda_g, \mathbf{x})$
+\STATE Select parents via Tournament Selection \cite{alsajri2024intrusion}
+\STATE Generate offspring using Crossover and Mutation \cite{singh2025optimizing}
+\STATE Evaluate offspring and update population \cite{aggarwal2024ensemble}
+\ENDFOR
+\STATE \textbf{return} $\mathbf{x}$ with maximum observed Fitness
+\end{algorithmic}
+
+\subsection{Reproducibility and Logging}
+To support the scientific rigor required by IAENG, the pipeline logs detailed telemetry, including per-generation convergence metrics, selected feature persistence, and per-class confusion matrices. All experimental seeds are fixed (\texttt{random\_state=42}) to guarantee result consistency across different hardware configurations.
+
+\section{Results}
+\label{sec:results}
+
+% --- Placeholders for Figures to fix "Undefined Reference" errors ---
+% These labels MUST match the \ref{} calls in your text.
+% Adjust the filenames (e.g., pr_curve.png) to match your uploaded files.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\columnwidth]{Figure_6_Multi-Class_Precision-Recall_Analysis.png}
+    \caption{Multi-Class Precision-Recall Analysis.}
+    \label{fig:pr_curve}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\columnwidth]{Figure_7_Multi-class_ROC_Curve_Analysis.png}
+    \caption{Multi-class ROC Curve Analysis.}
+    \label{fig:roc_curve}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\columnwidth]{Training_Time_Efficiency_and_Detection_Latency.png}
+    \caption{Efficiency and Latency Comparison.}
+    \label{fig:efficiency}
+\end{figure}
+
+This section presents a comprehensive evaluation of the proposed methodology for detecting DNS tunneling attacks. We utilize multi-faceted analysis, including precision-recall curves, ROC curves, and computational efficiency benchmarks, to validate the effectiveness of the penalty-based Genetic Algorithm (GA). All experiments were conducted on the CIRA-CIC-DoHBrw-2020 dataset, with a strict 50\%/37.5\%/12.5\% test/train/validation split to prevent data leakage.
+
+\subsection{Multi-Class Performance Analysis with Precision-Recall and ROC Curves}
+To evaluate the model's performance across all traffic classes, we present multi-class Precision-Recall (PR) and Receiver Operating Characteristic (ROC) curves in Fig.~\ref{fig:pr_curve} and Fig.~\ref{fig:roc_curve}.
+
+Fig.~\ref{fig:pr_curve} illustrates the trade-off between precision and recall for each class. The proposed GA-optimized Random Forest model achieves near-perfect performance for the Benign class ($mAP = 1.0000$), indicating high accuracy in filtering legitimate traffic. For malicious classes, the model demonstrates exceptional detection: Iodine ($mAP = 0.9865$), DNS2TCP ($mAP = 0.9986$), and Dnscat2 ($mAP = 0.9750$). 
+
+Fig.~\ref{fig:roc_curve} confirms these results through ROC analysis. An AUC score of 1.0000 for the Benign class signifies zero false positives, which is critical for operational deployment. The malicious classes also show outstanding AUC scores: Iodine ($AUC = 0.9993$), DNS2TCP ($AUC = 0.9997$), and Dnscat2 ($AUC = 0.9992$). These values indicate that the model distinguishes malicious traffic with extremely high confidence, even under the constraints of encrypted DoH traffic.
+
+\subsection{Computational Efficiency and Real-Time Deployment Feasibility}
+Our proposed method addresses the high computational costs cited in prior work by integrating the penalty-based GA for feature reduction. As shown in Fig.~\ref{fig:efficiency}, the GA-optimized model reduces training time by 45\% compared to a baseline Random Forest trained on the full feature set (12.5 seconds vs. 6.8 seconds). 
+
+More importantly, the inference latency---the time to classify a single DNS packet---is reduced by 12\%, from $0.000052$~ms/pkt to $0.000046$~ms/pkt. This low latency is crucial for real-time network monitoring systems where decisions must be made within microseconds. This gain is a result of the GA selecting only the most critical features (e.g., \textit{PacketLengthMode}, \textit{SourcePort}), reducing the computational load without sacrificing accuracy.
+
+\subsection{Ablation Study: Impact of the Adaptive Penalty Mechanism}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\columnwidth]{Convergence_on_Sphere_and_Rosenbrock_Functions.png}
+    \caption{Convergence on Benchmark Functions.}
+    \label{fig:convergence}
+\end{figure}
+
+To validate the proposed adaptive penalty mechanism ($\lambda_{g}=\lambda_{0}(1-\frac{g}{G})$), we conducted an ablation study comparing it against two state-of-the-art Genetic Algorithm variants: Matrix GA and Hybrid JAYA-GA. 
+
+Fig.~\ref{fig:convergence} presents the convergence curves on standard benchmark functions. On the Sphere function, our Penalty-GA converges to a fitness value of approximately 1.0 within 18 generations, while SOTA variants stabilize at higher values or diverge. On the Rosenbrock function, our method demonstrates superior stability, reaching a fitness of 1000, while SOTA methods fail to converge to a global optimum. This proves that the adaptive penalty provides stronger evolutionary pressure, guiding the search toward optimal solutions more reliably than static approaches.
+
+\subsection{Comparison with State-of-the-Art Optimization Algorithms}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\columnwidth]{SOTA_Tournament_Results_DNS-Tunnelling-2020.png}
+    \caption{Tournament Results against SOTA methods.}
+    \label{fig:sota_tournament}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\columnwidth]{Feature_Selection_Persistence_SOTA_vs_Proposed.png}
+    \caption{Feature Selection Persistence Heatmap.}
+    \label{fig:feature_persistence}
+\end{figure}
+
+We conducted a head-to-head comparison against Matrix GA (2024) and JAYA-GA (2025). Fig.~\ref{fig:sota_tournament} summarizes these results. In terms of parsimony, our Proposed-Penalty algorithm selected only 16 features, outperforming Matrix-GA-2024 (20 features). For predictive power, our method achieved the highest Matthews Correlation Coefficient (MCC) of 0.984. 
+
+The stability of the process was analyzed using a heatmap (Fig.~\ref{fig:feature_persistence}). Our algorithm exhibits high persistence: key features like \textit{PacketLengthMode}, \textit{SourcePort}, and \textit{DestinationPort} were selected in all 20 generations. In contrast, SOTA algorithms frequently toggle features, suggesting instability.
+
+\subsection{Trade-off Analysis}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.8\columnwidth]{SOTA_Head-to-Head_Feature_Efficiency_vs_Accuracy.png}
+    \caption{Feature Efficiency vs. Accuracy Trade-off.}
+    \label{fig:tradeoff}
+\end{figure}
+
+Finally, we visualize the trade-off between model complexity and detection accuracy in Fig.~\ref{fig:tradeoff}. Our Proposed-Penalty algorithm is positioned in the top-left corner of the plot, representing the optimal point: it achieves the highest F1-Score (0.9935) with the lowest number of features (10.2 average).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Conclusion}
+\label{sec:conclusion}
+
+In this study, we presented an enhanced DNS tunneling detection framework by integrating Random Forest classifiers with a novel penalty-based Genetic Algorithm for optimized feature selection. By dynamically balancing classification accuracy with feature parsimony, the proposed hybrid approach effectively identifies malicious patterns within both standard and encrypted DNS-over-HTTPS (DoH) traffic. Experimental evaluations conducted on the \textit{CIRA-CIC-DoHBrw-2020} benchmark dataset demonstrate that our methodology achieves a superior F1-score of 99.84\%, outperforming existing state-of-the-art models \cite{yusof2022visualizing, casanova2023malicious, singh2022malicious}. 
+
+The results underscore the efficacy of evolutionary optimization in refining high-dimensional network data, particularly for detecting sophisticated tunneling tools such as Iodine, DNS2TCP, and DNScat2 \cite{halim2021effective, alsajri2024intrusion}. Furthermore, the adaptive penalty mechanism introduced in this work ensures a lightweight detection profile, making the framework suitable for real-time security monitoring in high-throughput network gateways and resource-constrained environments \cite{akem2025real, liu2025intrusion}.
+
+
+
+Future research will focus on expanding the evaluation framework to include emerging tunneling techniques and assessing the model's resilience against adversarial machine learning attacks designed to evade statistical detection \cite{chen2020generating, niu2020toward}. Additionally, we intend to explore the integration of reinforcement learning and hybrid deep learning architectures (e.g., CNN-LSTM) to further enhance the temporal analysis of malicious DNS streams in next-generation 6G and Industry 4.0 paradigms \cite{alzighaibi2023detection, sammour2026advanced, li2025harnessing}.
+
+\section*{Acknowledgment}
+The authors would like to express their gratitude to Universiti Teknikal Malaysia Melaka (UTeM) for providing the necessary resources and support for this research. This work was supported in part by the Ajman University Research Fund Grant (ANTARABANGSA(URMG)-AJMAN/2024/FTMK/A00069). Additionally, the authors acknowledge the use of Grammarly for proofreading and enhancing the clarity of this manuscript. The authors also thank the Canadian Institute for Cybersecurity (CIC) for providing the \texttt{CIRA-CIC-DoHBrw-2020} dataset. The code and implementation for this study are available on GitHub \cite{github_repo}.
+
+
+% Can use something like this to put references on a page
+% by themselves when using endfloat and the captionsoff option.
+\ifCLASSOPTIONcaptionsoff
+  \newpage
+\fi
+
+
+
+% trigger a \newpage just before the given reference
+% number - used to balance the columns on the last page
+% adjust value as needed - may need to be readjusted if
+% the document is modified later
+%\IAENGtriggeratref{8}
+% The "triggered" command can be changed if desired:
+%\IAENGtriggercmd{\enlargethispage{-5in}}
+
+% references section
+
+% can use a bibliography generated by BibTeX as a .bbl file
+% BibTeX documentation can be easily obtained at:
+% http://www.ctan.org/tex-archive/biblio/bibtex/contrib/doc/
+% The IAENGtran BibTeX style support page is at:
+% http://www.michaelshell.org/tex/IAENGtran/bibtex/
+%\bibliographystyle{IAENGtran}
+% argument is your BibTeX string definitions and bibliography database(s)
+%\bibliography{IAENGabrv,../bib/paper}
+%
+% <OR> manually copy in the resultant .bbl file
+% set second argument of \begin to the number of references
+% (used to reserve space for the reference number labels box)
+% \begin{thebibliography}{1}
+
+% \bibitem{IJCS}
+% N.~Meghanathan and G.~W. Skelton, ``Risk Notification Message
+% Dissemination Protocol for Energy Efficient Broadcast in Vehicular
+% Ad hoc Networks,'' {\it IAENG International Journal of Computer
+% Science}, vol. 37, no. 1, pp. 1-10, Jul. 2010.
+
+% \end{thebibliography}
+
+
+% >>>>>>>>>>>>>>>>>>>>>> Bibliography <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+\bibliographystyle{BibTeXtran}   % (uses file "BibTeXtran.bst")
+\bibliography{BibTeXrefs}       % (expects the reference in the file "BibTeXrefs.bib")
+
+
+
+% biography section
+%
+% If you have an EPS/PDF photo (graphicx package needed) extra braces are
+% needed around the contents of the optional argument to biography to prevent
+% the LaTeX parser from getting confused when it sees the complicated
+% \includegraphics command within an optional argument. (You could create
+% your own custom macro containing the \includegraphics command to make things
+% simpler here.)
+%\begin{biography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{mshell}}]{Michael Shell}
+% or if you just want to reserve a space for a photo:
+
+%\begin{IAENGbiography}{Michael Shell} Biography text here.
+%\end{IAENGbiography}
+
+% if you will not have a photo at all:
+
+\begin{IAENGbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{author1.png}}]{Mahmoud Sammour}
+received a B.S. degree in Information Technology Systems from the University of Gaza, Palestine, in 2008 and an M.S. degree in Artificial Intelligence from the National University of Malaysia (UKM) in 2017. He is pursuing a Ph.D. in Artificial Intelligence at Universiti Teknikal Malaysia Melaka (UTeM). From 2022 to 2023, he served as an AI coordinator with the University College of Applied Sciences, Gaza, where he led the AI curriculum development and taught courses in data science and machine learning. Since 2024, he has been the Head of AI Research at a Marketing Research Consultancy in UAE, where he develops innovative AI solutions for diverse industry applications. He is also an independent AI Consultant specializing in natural language processing, machine learning optimization, and digital transformation. Mr. Sammour has authored multiple publications in high-impact journals and conferences. His research interests include clustering algorithms, hierarchical learning models, and advanced NLP systems. He is a mentor in AI development programs, fostering talent and guiding students in cutting-edge AI technologies. He has received several awards, including the Malaysian International Scholarship and the UTeM ZAMALAH, for his outstanding academic and professional contributions.
+\end{IAENGbiography}
+
+\begin{IAENGbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{author2.png}}]{Dr. Mohd Fairuz Iskandar Othman} 
+is a Senior Lecturer in the Faculty of Information and Communication Technology at Universiti Teknikal Malaysia Melaka (UTeM). He earned his Ph.D. in Information Technology from Queensland University of Technology and a Master's degree in Internetworking from the University of Technology, Sydney. His research interests encompass human behavioral aspects of information security, IT governance and management, and related computer networks and security topics. Dr. Othman is a certified Cisco Networking Academy Instructor and holds professional certifications from Huawei, Cisco, CompTIA, ISC2, and Microsoft. He has extensive experience as a consultant on various policy and framework development at the national level, as well as computer network and security projects with organizations such as the Ministry of Health (MoH), the Malaysian Communications and Multimedia Commission (MCMC), and the Malaysia Anti-Corruption Commission (MACC). Additionally, he is an active member of the Information Security Forensics and Computer Networking (INFORSNET) Research Group and UTeM Cybersecurity Competence Centre (UTeMCysCC) at UTeM.
+\end{IAENGbiography}
+
+\begin{IAENGbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{author4.png}}]{Aslinda Hassan} 
+obtained her PhD in Electrical Engineering from Memorial University of Newfoundland, located in St. John's, NL, Canada, in 2014. She earned her Master of Science degree in Computer Science from Universiti Teknologi Malaysia (UTM) in 2001, and her Bachelor of Science degree in Business Administration in Management Information Systems, with honors, from the University of Pittsburgh in Pittsburgh, PA, USA, in 1999. In 2004, Dr. Hassan commenced her career at Universiti Teknikal Malaysia Melaka, where she presently holds the position of Senior Lecturer within the Faculty of Information and Communication Technology. Her research interests encompass vehicular ad hoc networks, vehicular communication, wireless ad-hoc networks, wireless sensor networks, wireless communication, ad hoc routing protocols, cyber-physical systems (CPS), Internet of Things (IoT), as well as network performance modelling and analysis, and network programming interfaces.
+\end{IAENGbiography}
+
+
+
+\begin{IAENGbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{author3.png}}]{Omar A A Bhais} 
+received a B.S. degree (Hons.) in Computer Science (Artificial Intelligence) from Universiti Teknikal Malaysia Melaka (UTeM), Malaysia, in 2025. From 2019 to 2021, he earned an electrical certification from Hebron Industrial School. His professional development includes certifications such as the Google Data Analytics Professional Certificate, MATLAB Onramp Certification, and various machine learning certifications from RapidMiner and DeepLearning.AI. Omar has been a Project Leader for multiple initiatives during his studies, including his Final Year Project on \u201cMonitoring System and Connectivity Fault Predictive Analysis in GPON Networks.\u201d He has consistently been a Dean\u2019s List honoree for multiple semesters, demonstrating academic excellence. His research interests include machine learning, Natural Language Processing, deep learning, and data-driven decision-making. Omar is passionate about exploring innovative AI solutions and technologies. He aims to contribute to cutting-edge advancements in AI and data science.
+\end{IAENGbiography}
+
+
+\begin{IAENGbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{author5.png}}]{M. H. Ahmad Hijazi} 
+Mohd Hanafi Ahmad Hijazi received the Bachelor of Science (Computer) and Masters of Computer Science degrees from Universiti Teknologi Malaysia (UTM) in 2001 and 2004, respectively. He obtained his Ph.D. in Computer Science from the University of Liverpool in 2012.
+
+He is currently an Associate Professor of Computer Science at the Faculty of Computing and Informatics, Universiti Malaysia Sabah (UMS), where he also serves as the Dean. His research interests include data mining, artificial intelligence, machine learning, data analytics, and computer vision, with applications in healthcare, biometrics, and sentiment analysis.
+\end{IAENGbiography}
+
+
+% insert where needed to balance the two columns on the last page with
+% biographies
+%\newpage
+
+%\begin{IAENGbiographynophoto}{Jane Doe}
+%Biography text here.
+%\end{IAENGbiographynophoto}
+
+% You can push biographies down or up by placing
+% a \vfill before or after them. The appropriate
+% use of \vfill depends on what kind of text is
+% on the last page and whether or not the columns
+% are being equalized.
+
+%\vfill
+
+% Can be used to pull up biographies so that the bottom of the last one
+% is flush with the other column.
+%\enlargethispage{-5in}
+
+
+
+% that's all folks
+\end{document}

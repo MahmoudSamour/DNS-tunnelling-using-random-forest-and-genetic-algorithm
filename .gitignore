@@ -116,3 +116,7 @@ pnpm-debug.log
 # But not the example file
 !/.env.example
 !/.env.sample
+
+# Revisions and Reviews #
+#########################
+reviewer_comments/benchmark_output/
