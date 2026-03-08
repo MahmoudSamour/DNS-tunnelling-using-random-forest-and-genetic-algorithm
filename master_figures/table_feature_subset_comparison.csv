@@ -1,0 +1,5 @@
+Feature Subset,# Features,Test F1 (Weighted),MCC,Train Time (s),Latency (ms/pkt)
+Baseline (All 32),32,0.997805,0.993879,19.463,0.000734
+Proposed-Penalty GA (10),10,0.99435,0.984244,16.813,0.000914
+SOTA: Matrix-GA (19),19,0.99525,0.986735,17.025,0.000665
+SOTA: JAYA-GA (19),19,0.995829,0.988362,13.822,0.000624

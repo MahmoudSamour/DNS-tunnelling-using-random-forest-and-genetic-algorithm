@@ -1,0 +1,4 @@
+Comparison,P-Value,T-Statistic,Significant?,Winner
+Proposed vs Matrix-GA,2.2224e-02,-2.7569,Yes (p < 0.05),Matrix-GA
+Proposed vs JAYA-GA,2.3613e-02,-2.7199,Yes (p < 0.05),JAYA-GA
+Proposed vs All Features,6.9780e-01,0.4010,No,Proposed
