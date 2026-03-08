@@ -105,6 +105,13 @@ def main():
     best_features_dict = run_tournament(X_train, y_train, X_val, y_val)
     best_features_dict["All Features"] = list(range(X_train.shape[1]))
 
+    # 2. Persist discovered indices so the notebook can load them dynamically
+    import json
+    indices_path = f"{OUT_DIR}/best_feature_indices.json"
+    with open(indices_path, "w") as f:
+        json.dump(best_features_dict, f, indent=2)
+    log_print(f"\n💾 Saved best feature indices to `{indices_path}`")
+
     log_print("\n\n📊 Running 10-Fold Cross Validation and Statistical P-Tests on FULL Dataset...")
     X_full = np.concatenate([X_train, X_val, X_test], axis=0) # Total 100% of the dataset
     y_full = np.concatenate([y_train, y_val, y_test], axis=0)
