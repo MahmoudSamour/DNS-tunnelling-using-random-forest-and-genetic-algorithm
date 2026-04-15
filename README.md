@@ -119,11 +119,11 @@ If you use this work, please cite:
 ---
 
 ## Team 👥
-| Researcher                     | Contribution             |
-|--------------------------------|-------------------------|
-| Mahmoud Sammour                | Methodology, Implementation |
-| Mohd Fairuz Iskandar Othman    | Supervision, Validation |
-| Omar A A Bhais                 | Data Preprocessing, Testing |
-| Mohsin Ali                     | Feature Engineering, Dataset Preprocessing |
-| Aslinda Hassan             | Co-Supervisor, Research Guidance |
+| Researcher                     | Contribution             | ORCID |
+|--------------------------------|-------------------------|-------|
+| Mahmoud Sammour                | Methodology, Implementation | [![ORCID](https://img.shields.io/badge/ORCID-0000--0002--6860--2804-green)](https://orcid.org/0000-0002-6860-2804) |
+| Mohd Fairuz Iskandar Othman    | Supervision, Validation | |
+| Omar A A Bhais                 | Data Preprocessing, Testing | |
+| Mohsin Ali                     | Feature Engineering, Dataset Preprocessing | [![ORCID](https://img.shields.io/badge/ORCID-0009--0006--3101--5194-green)](https://orcid.org/0009-0006-3101-5194) |
+| Aslinda Hassan             | Co-Supervisor, Research Guidance | |
 
