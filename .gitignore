@@ -45,14 +45,7 @@ Thumbs.db
 *.rar
 *.7z
 
-# Image and media files (all formats)
-*.png
-*.jpg
-*.jpeg
-*.gif
-*.svg
-*.eps
-*.tiff
+# Media files (heavy formats only — tracked images live in media/)
 *.mov
 *.mp4
 *.avi
@@ -105,14 +98,16 @@ pnpm-debug.log
 !/.env.sample
 
 ### Thesis and Research Output ###
-# Never leak thesis drafts, figures, results, or datasets
+# Never leak thesis drafts, figures, or results
 theses/
 Thesis_Results/
 experiment_results/
 master_figures/
 heavy_master_results/
 overleaf_sync.zip
-media/
+
+# media/ is tracked on purpose — contains README figures for GitHub
+!media/
 models/__pycache__/
 
 ### Local Notes and Instructions ###
