@@ -8,31 +8,37 @@ from sklearn.impute import SimpleImputer
 
 def download_dataset():
     file_urls = [
-        ("https://drive.google.com/uc?export=download&id=1cictwnxUyu1vCa4H9iefIrQeVLCC3RCv", "benign-chrome.csv"),
-        ("https://drive.google.com/uc?export=download&id=1cms99qEylyvesqcX3dQRZOUQRAONy2uS", "benign-firefox.csv"),
-        ("https://drive.google.com/uc?export=download&id=1cqDL7A_kdOCL4Km4uUifRPllFmB3WaZ_", "mal-dns2tcp.csv"),
-        ("https://drive.google.com/uc?export=download&id=1cxeTvXNV-OY_4T6xs4sUB98lmanROw3m", "mal-dnscat2.csv"),
-        ("https://drive.google.com/uc?export=download&id=1czNRMpNyicFNYW2fbK_WjsoF77qB9_XA", "mal-iodine.csv")
+        ("1cictwnxUyu1vCa4H9iefIrQeVLCC3RCv", "benign-chrome.csv"),
+        ("1cms99qEylyvesqcX3dQRZOUQRAONy2uS", "benign-firefox.csv"),
+        ("1cqDL7A_kdOCL4Km4uUifRPllFmB3WaZ_", "mal-dns2tcp.csv"),
+        ("1cxeTvXNV-OY_4T6xs4sUB98lmanROw3m", "mal-dnscat2.csv"),
+        ("1czNRMpNyicFNYW2fbK_WjsoF77qB9_XA", "mal-iodine.csv")
     ]
+
+    import gdown
 
     if not os.path.exists("DoHBrw-2020"):
         os.makedirs("DoHBrw-2020")
 
     print("--- Checking Data Files ---")
-    for url, filename in file_urls:
+    for file_id, filename in file_urls:
         file_path = os.path.join("DoHBrw-2020", filename)
-        if not os.path.exists(file_path):
+        
+        # Check if file exists and is valid (not HTML virus warning)
+        needs_download = True
+        if os.path.exists(file_path):
+            if os.path.getsize(file_path) > 10000: # larger than HTML warning pages
+                needs_download = False
+                print(f"{filename} already exists and is valid.")
+
+        if needs_download:
             try:
                 print(f"Downloading {filename}...")
-                response = requests.get(url, stream=True)
-                with open(file_path, "wb") as f:
-                    for chunk in response.iter_content(chunk_size=8192):
-                        if chunk: f.write(chunk)
+                gdown.download(id=file_id, output=file_path, quiet=False)
                 print(f"{filename} ready.")
             except Exception as e:
                 print(f"Error downloading {filename}: {e}")
-        else:
-            print(f"{filename} already exists.")
+
 
 def load_and_preprocess_dns_data():
     download_dataset()

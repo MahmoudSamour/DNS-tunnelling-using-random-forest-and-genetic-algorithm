@@ -16,6 +16,7 @@ This repository implements a hybrid machine learning model combining **Random Fo
 
 ## Key Innovations 🚀
 - **Adaptive Penalty GA**: Dynamically balances feature reduction & accuracy
+- **Reinforcement Learning-Based Feature Engineering**: Advanced feature selection and pipeline optimization (contributed by Mohsin Ali)
 - **DoH-Optimized Features**: Detects patterns in encrypted DNS-over-HTTPS traffic
 - **Composite Fitness Function**: Maximizes F1-score while minimizing features
 
@@ -111,7 +112,7 @@ If you use this work, please cite:
 ```bibtex
 @article{sammour2024dns,
   title={Enhanced Detection of DNS Tunneling: Leveraging Random Forest and Genetic Algorithm for Improved Security},
-  author={Sammour, Mahmoud and Othman, Mohd Fairuz Iskandar and Bhais, Omar},
+  author={Sammour, Mahmoud and Othman, Mohd Fairuz Iskandar and Ali, Mohsin},
   journal={IEEE Access},
 }
 ```
@@ -123,7 +124,6 @@ If you use this work, please cite:
 |--------------------------------|-------------------------|-------|
 | Mahmoud Sammour                | Methodology, Implementation | [![ORCID](https://img.shields.io/badge/ORCID-0000--0002--6860--2804-green)](https://orcid.org/0000-0002-6860-2804) |
 | Mohd Fairuz Iskandar Othman    | Supervision, Validation | |
-| Omar A A Bhais                 | Data Preprocessing, Testing | |
 | Mohsin Ali                     | Feature Engineering, Dataset Preprocessing | [![ORCID](https://img.shields.io/badge/ORCID-0009--0006--3101--5194-green)](https://orcid.org/0009-0006-3101-5194) |
 | Aslinda Hassan             | Co-Supervisor, Research Guidance | |
 

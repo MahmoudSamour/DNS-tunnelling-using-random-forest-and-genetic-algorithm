@@ -23,13 +23,25 @@ OUT_DIR = "master_figures"
 os.makedirs(OUT_DIR, exist_ok=True)
 CLASS_NAMES = ['Benign', 'Iodine', 'DNS2TCP', 'Dnscat2']
 
-# Based on previous optimal runs from the GAs
-FEATURE_SETS = {
-    "Baseline (All 32)": list(range(32)),
-    "Proposed-Penalty GA (20)": [0, 2, 4, 5, 7, 8, 10, 11, 14, 15, 17, 18, 19, 21, 23, 24, 25, 27, 29, 31],
-    "SOTA: Matrix-GA (13)": [0, 3, 5, 8, 11, 14, 17, 20, 22, 25, 28, 30, 31],
-    "SOTA: JAYA-GA (17)": [1, 2, 4, 6, 8, 9, 12, 14, 15, 18, 20, 22, 24, 26, 28, 29, 31]
-}
+import json
+try:
+    with open("Thesis_Results/Appendix_Supplementary/best_feature_indices.json", "r") as f:
+        best_features = json.load(f)
+    FEATURE_SETS = {
+        "Baseline (All 32)": best_features["All Features"],
+        f"Proposed-Penalty GA ({len(best_features['Proposed-Penalty'])})": best_features["Proposed-Penalty"],
+        f"SOTA: Matrix-GA ({len(best_features['Matrix-GA'])})": best_features["Matrix-GA"],
+        f"SOTA: JAYA-GA ({len(best_features['JAYA-GA'])})": best_features["JAYA-GA"]
+    }
+except FileNotFoundError:
+    print("Warning: best_feature_indices.json not found. Using defaults.")
+    FEATURE_SETS = {
+        "Baseline (All 32)": list(range(32)),
+        "Proposed-Penalty GA (20)": [0, 2, 4, 5, 7, 8, 10, 11, 14, 15, 17, 18, 19, 21, 23, 24, 25, 27, 29, 31],
+        "SOTA: Matrix-GA (13)": [0, 3, 5, 8, 11, 14, 17, 20, 22, 25, 28, 30, 31],
+        "SOTA: JAYA-GA (17)": [1, 2, 4, 6, 8, 9, 12, 14, 15, 18, 20, 22, 24, 26, 28, 29, 31]
+    }
+
 
 def main():
     print(f"🚀 Initializing Master Evaluation Run... Saving outputs to `{OUT_DIR}/`")
@@ -88,7 +100,8 @@ def main():
 
     baseline_results = []
     # Test all classifiers strictly on the Proposed-Penalty Feature subset
-    prop_idx = FEATURE_SETS["Proposed-Penalty GA (20)"]
+    prop_key = next((k for k in FEATURE_SETS if "Proposed-Penalty" in k), None)
+    prop_idx = FEATURE_SETS[prop_key]
     
     for clf_name, clf in classifiers.items():
         print(f"  -> Testing {clf_name}...")
@@ -119,7 +132,7 @@ def main():
     # PART 3: PROPOSED MODEL IN-DEPTH VISUALIZATIONS (ROC, PR, CM, FI)
     # ---------------------------------------------------------
     print("\n[3/5] Generating High-Resolution Model Visualizations...")
-    best_clf = trained_models["Proposed-Penalty GA (20)"]
+    best_clf = trained_models[prop_key]
     y_score = best_clf.predict_proba(X_test[:, prop_idx])
     y_test_bin = label_binarize(y_test, classes=[0, 1, 2, 3])
     y_pred = best_clf.predict(X_test[:, prop_idx])

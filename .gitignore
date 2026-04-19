@@ -95,6 +95,7 @@ dist/
 venv/
 env/
 .env
+.venv/
 
 # Node.js #
 ###########
@@ -120,3 +121,16 @@ pnpm-debug.log
 # Revisions and Reviews #
 #########################
 reviewer_comments/benchmark_output/
+
+# Local notes #
+################
+memory.md
+
+# Overleaf and Large Output Directories
+theses/
+Thesis_Results/
+experiment_results/
+master_figures/
+heavy_master_results/
+overleaf_sync.zip
+
