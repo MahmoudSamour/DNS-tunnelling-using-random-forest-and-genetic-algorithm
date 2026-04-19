@@ -6,6 +6,8 @@ Your local LaTeX thesis files have been updated with the 98.12% F1-Score, 10 fea
 Open your local `.tex` files inside the `theses/` directory using any text editor (like VS Code or Notepad). Press **Ctrl+F** and search for `OVERLEAF UPDATE REQUIRED`. 
 This string marks exactly where I injected updates. Copy the text directly below that marker and paste it over the corresponding section in your Overleaf editor.
 
+*(Note: In addition to the performance metrics, I formally corrected your Genetic Algorithm Penalty Equation in Chapter 3 to accurately scale linearly $(g/G)$ over time. Please ensure you copy those marked equation blocks in `theses/3-chap-method.tex`!)*
+
 ### 2. Uploading the New Figures
 The structural updates in Chapter 4 require new images. Please locate your generated outputs folder (`/Thesis_Results/Chapter_4_Main_Results/`) and drag-and-drop the following 10 PNGs into your Overleaf images directory:
 
