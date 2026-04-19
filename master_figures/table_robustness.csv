@@ -1,5 +1,0 @@
-Scenario,# Test Samples,Accuracy,F1-Weighted
-Full Test Set,583635,0.994351,0.99435
-Without Iodine,560439,0.995461,0.996373
-Without DNS2TCP,499870,0.996271,0.996827
-Without Dnscat2,565717,0.995802,0.996541

@@ -1,4 +1,0 @@
-Classifier,Accuracy,F1-Weighted,Balanced Accuracy,MCC
-Random Forest (Proposed),0.994351,0.99435,0.97464,0.984244
-Logistic Regression (LR),0.79518,0.749343,0.443676,0.304125
-Decision Tree (DT),0.989389,0.989403,0.960496,0.970482
