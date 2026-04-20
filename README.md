@@ -62,7 +62,7 @@ Even through HTTPS encryption, **automated tunneling tools leave a behavioral fi
 
 The challenge: there are **34 such features**. Using all of them in a real-time firewall would be too slow. 
 
-**So we built an AI that learns which 10 features matter most — automatically.**
+**So we built an AI that learns which 11 features matter most — automatically.**
 
 ---
 
@@ -84,7 +84,7 @@ The challenge: there are **34 such features**. Using all of them in a real-time 
 │   │  over 100 gens.     │    │   for imbalanced     │  │
 │   └─────────────────────┘    └──────────────────────┘  │
 │              ↕                          ↕               │
-│         10 Features              98.12% F1-Score        │
+│         11 Features              98.12% F1-Score        │
 └─────────────────────────────────────────────────────────┘
 ```
 
