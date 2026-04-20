@@ -113,6 +113,28 @@ This is why we call it *"Adaptive"* — the algorithm mathematically forces its 
 
 ---
 
+## 🔄 Chapter 3.5: See It To Believe It — System Diagrams
+
+### The End-to-End Pipeline
+
+![Methodology Flowchart](https://raw.githubusercontent.com/MahmoudSamour/DNS-tunnelling-using-random-forest-and-genetic-algorithm/main/media/flowchart_methodology.png)
+
+*Four stages: raw DoH packet capture → behavioral feature extraction → GA-driven feature selection → RF multi-class classification.*
+
+### Inside the Genetic Algorithm Loop
+
+![GA Flowchart](https://raw.githubusercontent.com/MahmoudSamour/DNS-tunnelling-using-random-forest-and-genetic-algorithm/main/media/penalty_based_ga_flowchart.png)
+
+*The penalty term $\lambda_g = \lambda_{base} \cdot (g/G)$ grows with every generation — early freedom, late discipline.*
+
+### Dataset: How Attack Traffic is Distributed
+
+![Attack Distribution](https://raw.githubusercontent.com/MahmoudSamour/DNS-tunnelling-using-random-forest-and-genetic-algorithm/main/media/Attack%20Type%20Distribution%20Over%20Time.png)
+
+*The 78% Benign majority creates a severe class imbalance — which is why Weighted F1-Score (not raw Accuracy) is the correct evaluation metric.*
+
+---
+
 ## 📊 Chapter 4: The Results — Numbers That Speak
 
 ### 4.1 — The Feature Importance Ranking
