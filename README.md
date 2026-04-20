@@ -388,7 +388,7 @@ python heavy_master_evaluation.py
 | **Mahmoud Sammour** | Principal Researcher · Methodology · Full Implementation | [![ORCID](https://img.shields.io/badge/ORCID-0000--0002--6860--2804-green?logo=orcid)](https://orcid.org/0000-0002-6860-2804) |
 | **Mohd Fairuz Iskandar Othman** | Principal Supervisor · Research Direction | — |
 | **Aslinda Hassan** | Co-Supervisor · Theoretical Validation | — |
-| **Mohsin Ali** | Collaborator · RL Feature Engineering Pipeline | [![ORCID](https://img.shields.io/badge/ORCID-0009--0006--3101--5194-green?logo=orcid)](https://orcid.org/0009-0006-3101-5194) |
+| **Mohsin Ali** | Collaborator · Feature Engineering & Dataset Validation | [![ORCID](https://img.shields.io/badge/ORCID-0009--0006--3101--5194-green?logo=orcid)](https://orcid.org/0009-0006-3101-5194) |
 
 </div>
 
