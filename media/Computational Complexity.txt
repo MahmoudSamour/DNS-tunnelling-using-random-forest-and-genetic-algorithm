@@ -1,0 +1,7 @@
+Computational Complexity (G=Generations, P=Population, D=Dimensions, RL=RL update cost):
+- GA: O(G*P*D)
+- PPS-GA: O(G*P*(D+P))
+- RLCGWO: O(G*P*(D+P))
+- EnhancedRLGWO: O(G*P*(D+P) + G*RL)
+- DE: O(G*P*D)
+- PSO: O(G*P*D)

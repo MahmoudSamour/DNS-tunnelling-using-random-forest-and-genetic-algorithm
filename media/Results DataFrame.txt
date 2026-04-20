@@ -1,0 +1,49 @@
+
+--- Results DataFrame ---
+      Function  GA Mean Fitness  GA Std Fitness  GA Mean Time (s)  \
+0       Sphere        2.321e-03       2.510e-03         4.003e-02   
+1    Rastrigin        9.200e+00       2.814e+00         5.594e-02   
+2   Rosenbrock        5.120e+01       2.478e+01         4.417e-02   
+3       Ackley        2.131e-02       1.320e-02         7.476e-02   
+4     Griewank        3.650e-02       3.512e-02         7.989e-02   
+5  Michalewicz       -8.454e+00       5.524e-01         6.613e-02   
+
+   PPS-GA Mean Fitness  PPS-GA Std Fitness  PPS-GA Mean Time (s)  \
+0            1.491e-02           1.321e-02             6.966e-02   
+1            1.043e+01           2.967e+00             1.014e-01   
+2            8.359e+01           9.978e+01             1.032e-01   
+3            7.828e-02           4.642e-02             8.914e-02   
+4            1.965e+00           2.710e+00             1.466e-01   
+5           -8.360e+00           4.226e-01             1.179e-01   
+
+   RLCGWO Mean Fitness  RLCGWO Std Fitness  RLCGWO Mean Time (s)  \
+0            2.778e-10           4.485e-10             2.584e-01   
+1            2.812e+00           4.341e+00             2.933e-01   
+2            7.511e+00           3.868e-01             3.315e-01   
+3            6.554e-07           7.405e-07             3.173e-01   
+4            8.396e-02           8.037e-02             4.718e-01   
+5           -3.014e+00           5.575e-01             3.757e-01   
+
+   EnhancedRLGWO Mean Fitness  EnhancedRLGWO Std Fitness  \
+0                   4.657e-30                  9.255e-30   
+1                   0.000e+00                  0.000e+00   
+2                   8.119e+00                  4.029e-01   
+3                   1.608e-14                  1.396e-14   
+4                   0.000e+00                  0.000e+00   
+5                  -4.863e+00                  1.421e+00   
+
+   EnhancedRLGWO Mean Time (s)  DE Mean Fitness  DE Std Fitness  \
+0                    2.461e-01        6.688e+00       2.896e+00   
+1                    2.591e-01        6.559e+01       7.316e+00   
+2                    2.892e-01        3.874e+03       3.092e+03   
+3                    2.618e-01        1.458e+01       1.150e+00   
+4                    3.587e-01        2.717e+01       5.093e+00   
+5                    3.361e-01       -4.777e+00       5.631e-01   
+
+   DE Mean Time (s)  PSO Mean Fitness  PSO Std Fitness  PSO Mean Time (s)  
+0         1.403e-02         2.434e-02        2.296e-02          4.039e-02  
+1         1.725e-02         1.630e+01        7.014e+00          6.785e-02  
+2         1.583e-02         6.848e+01        3.304e+01          6.501e-02  
+3         1.883e-02         4.972e+00        2.070e+00          8.782e-02  
+4         4.130e-02         2.316e-01        1.081e-01          1.000e-01  
+5         2.069e-02        -7.584e+00        1.102e+00          8.399e-02  
