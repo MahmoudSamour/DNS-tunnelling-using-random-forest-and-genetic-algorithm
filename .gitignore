@@ -97,9 +97,10 @@ pnpm-debug.log
 !/.env.example
 !/.env.sample
 
-### Thesis and Research Output ###
-# Never leak thesis drafts, figures, or results
+### Thesis, Paper, and Research Output ###
+# Never leak thesis drafts, paper, figures, or results
 theses/
+paper/
 Thesis_Results/
 experiment_results/
 master_figures/
