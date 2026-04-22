@@ -62,7 +62,7 @@ Even through HTTPS encryption, **automated tunneling tools leave a behavioral fi
 
 The challenge: there are **34 such features**. Using all of them in a real-time firewall would be too slow. 
 
-**So we built an AI that learns which 11 features matter most — automatically.**
+**So we built an AI that learns which 10 features matter most — automatically.**
 
 ---
 
@@ -84,7 +84,7 @@ The challenge: there are **34 such features**. Using all of them in a real-time 
 │   │  over 100 gens.     │    │   for imbalanced     │  │
 │   └─────────────────────┘    └──────────────────────┘  │
 │              ↕                          ↕               │
-│         11 Features              98.12% F1-Score        │
+│         10 Features              99.75% F1-Score        │
 └─────────────────────────────────────────────────────────┘
 ```
 
@@ -157,10 +157,10 @@ The central claim of this research is that **using fewer features does not hurt 
 
 | Strategy | Features | F1-Score | Train Time | Latency |
 |:---|:---:|:---:|:---:|:---:|
-| 🔴 Baseline (All Features) | 32 | 0.994 | 10.2s | 0.00042 ms/pkt |
-| 🟡 SOTA: Matrix-GA | 13 | 0.990 | 5.7s | 0.00031 ms/pkt |
-| 🟡 SOTA: JAYA-GA | 17 | 0.989 | 10.0s | 0.00033 ms/pkt |
-| 🟢 **Proposed Penalty-GA** | **10** | **0.991** | **7.9s** | **0.00033 ms/pkt** |
+| 🔴 Baseline (All Features) | 32 | 0.993 | 10.2s | 0.00041 ms/pkt |
+| 🟡 SOTA: Matrix-GA | 13 | 0.990 | 5.7s | 0.00030 ms/pkt |
+| 🟡 SOTA: JAYA-GA | 17 | 0.989 | 10.0s | 0.00032 ms/pkt |
+| 🟢 **Proposed Penalty-GA** | **10** | **0.9975** | **6.9s** | **0.00032 ms/pkt** |
 
 > **🎬 Video Note:** The scatter plot shows our method landing in the top-left "sweet spot" — best accuracy-to-feature ratio. Use this as your "hero slide" in the thumbnail.
 
@@ -174,9 +174,13 @@ Why Random Forest and not Logistic Regression or a simple Decision Tree?
 
 | Algorithm | F1-Score | Accuracy | Balanced Acc |
 |:---|:---:|:---:|:---:|
-| 🏆 **Random Forest (Proposed)** | **0.991** | **0.991** | **0.961** |
-| Decision Tree | 0.980 | 0.979 | 0.904 |
-| Logistic Regression | 0.959 | 0.959 | 0.800 |
+| 🏆 **Random Forest (Proposed)** | **0.9975** | **0.9975** | **0.9931** |
+| Deep ANN (MLP) | 0.9944 | 0.9944 | 0.9845 |
+| KNN-Optimized | 0.9935 | 0.9935 | 0.9819 |
+| Decision Tree | 0.9962 | 0.9962 | 0.9893 |
+| SVM (RBF-Approx) | 0.9565 | 0.9549 | 0.8763 |
+| Logistic Regression | 0.9402 | 0.9390 | 0.8339 |
+| Naive Bayes | 0.9340 | 0.9357 | 0.8296 |
 
 > **Why RF wins:** Ensemble bagging reduces variance. Each of the 100 trees votes independently — no single noisy feature can derail the prediction. Logistic Regression collapses on the non-linear, multi-class distribution of DoH traffic.
 
@@ -196,11 +200,11 @@ The most dangerous failure mode of any IDS is blocking legitimate traffic. Execu
 
 | Traffic Class | Precision | Recall | F1-Score |
 |:---|:---:|:---:|:---:|
-| Benign | 100.00% | 100.00% | **100.00%** |
-| Iodine | 98.65% | 98.11% | **98.38%** |
-| DNS2TCP | 99.86% | 99.12% | **99.49%** |
-| DNScat2 | 97.50% | 96.88% | **97.19%** |
-| **Weighted Average** | — | — | **98.12%** |
+| Benign | 99.99% | 100.00% | **100.00%** |
+| Iodine | 97.77% | 98.72% | **98.24%** |
+| DNS2TCP | 99.51% | 99.04% | **99.27%** |
+| DNScat2 | 97.40% | 98.18% | **97.79%** |
+| **Weighted Average** | **99.75%** | **99.75%** | **99.75%** |
 
 ---
 
@@ -383,12 +387,15 @@ python heavy_master_evaluation.py
 
 <div align="center">
 
-| Researcher | Role | ORCID |
-|:---|:---|:---:|
-| **Mahmoud Sammour** | Principal Researcher · Methodology · Full Implementation | [![ORCID](https://img.shields.io/badge/ORCID-0000--0002--6860--2804-green?logo=orcid)](https://orcid.org/0000-0002-6860-2804) |
-| **Mohd Fairuz Iskandar Othman** | Principal Supervisor · Research Direction | — |
-| **Aslinda Hassan** | Co-Supervisor · Theoretical Validation | — |
-| **Mohsin Ali** | Collaborator · Feature Engineering & Dataset Validation | [![ORCID](https://img.shields.io/badge/ORCID-0009--0006--3101--5194-green?logo=orcid)](https://orcid.org/0009-0006-3101-5194) |
+| <img src="media/author1.png" width="120"> | <img src="media/author2.png" width="120"> | <img src="media/author3.png" width="120"> |
+|:---:|:---:|:---:|
+| **Mahmoud Sammour** | **Dr. Mohd Fairuz** | **Mohsin Ali** |
+| [ORCID](https://orcid.org/0000-0002-6860-2804) | Research Direction | [ORCID](https://orcid.org/0009-0006-3101-5194) |
+
+| <img src="media/author4.png" width="120"> | <img src="media/author5.png" width="120"> | |
+|:---:|:---:|:---:|
+| **Dr. Aslinda Hassan** | **Prof. M. Hanafi** | |
+| Theoretical Validation | External Validation | |
 
 </div>
 
