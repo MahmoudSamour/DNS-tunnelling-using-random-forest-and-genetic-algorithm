@@ -59,10 +59,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // Render the SVG
     const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
     path.setAttribute('d', pathData);
-    path.setAttribute('stroke', 'rgba(0, 240, 255, 0.4)');
-    path.setAttribute('stroke-width', '15');
+    path.setAttribute('stroke', 'rgba(0, 240, 255, 0.8)');
+    path.setAttribute('stroke-width', '20');
     path.setAttribute('fill', 'none');
-    path.setAttribute('filter', 'drop-shadow(0 0 25px rgba(0, 240, 255, 0.8))');
+    path.style.filter = 'drop-shadow(0 0 25px rgba(0, 240, 255, 1))';
     path.style.strokeLinecap = 'round';
     path.style.strokeLinejoin = 'round';
     svg.appendChild(path);
