@@ -17,7 +17,7 @@
 ---
 
 ## 🎓 Interactive PhD Defense Presentation
-Explore this research visually through the custom-built **[Interactive 3D Presentation Engine](./Interactive_Defense/index.html)**. Simply open `index.html` in any web browser to experience a cinematic, infinite-canvas presentation featuring glowing neural network connections and native HTML flowcharts designed specifically for this thesis defense.
+Explore this research visually through the custom-built **[Interactive 3D Presentation Engine](https://mahmoudsamour.github.io/DNS-tunnelling-using-random-forest-and-genetic-algorithm/Interactive_Defense/index.html)**. Simply click the link in any web browser to experience a cinematic, infinite-canvas presentation featuring glowing neural network connections and native HTML flowcharts designed specifically for this thesis defense.
 
 ---
 
