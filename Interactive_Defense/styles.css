@@ -27,36 +27,22 @@ body {
 /* Premium Animated Ambient Background */
 #ambient-bg {
     position: fixed;
-    top: -50vh;
-    left: -50vw;
-    width: 200vw;
-    height: 200vh;
-    background: 
-        radial-gradient(circle at 30% 30%, rgba(0, 240, 255, 0.15) 0%, transparent 40%),
-        radial-gradient(circle at 70% 70%, rgba(138, 43, 226, 0.15) 0%, transparent 40%),
-        radial-gradient(circle at 50% 50%, #1e3a8a 0%, var(--bg-color) 60%);
+    top: -5vh;
+    left: -5vw;
+    width: 110vw;
+    height: 110vh;
+    background-image: url('images/bg_dns_tunnel.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     z-index: -2;
-    animation: bgBreathe 20s ease-in-out infinite alternate;
+    animation: bgBreathe 30s ease-in-out infinite alternate;
+    opacity: 0.6; /* Keeps the image subtle and non-overpowering */
 }
 
 @keyframes bgBreathe {
     0% { transform: scale(1) translate(0, 0); }
-    100% { transform: scale(1.1) translate(-2%, -2%); }
-}
-
-/* Cyber Grid Overlay */
-#ambient-bg::after {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background-image: 
-        linear-gradient(rgba(0, 240, 255, 0.15) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0, 240, 255, 0.15) 1px, transparent 1px);
-    background-size: 60px 60px;
-    z-index: -1;
-    transform: perspective(600px) rotateX(60deg) scale(2.5);
-    transform-origin: center top;
-    opacity: 0.8;
+    100% { transform: scale(1.05) translate(-1%, -1%); }
 }
 
 /* UI Overlay */
