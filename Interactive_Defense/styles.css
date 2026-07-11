@@ -1,10 +1,10 @@
 :root {
-    --bg-color: #030613;
+    --bg-color: #0b1120;
     --accent-color: #00f0ff;
     --accent-glow: rgba(0, 240, 255, 0.8);
-    --node-bg: linear-gradient(135deg, rgba(15, 20, 35, 0.7) 0%, rgba(5, 10, 20, 0.7) 100%);
+    --node-bg: linear-gradient(135deg, rgba(20, 28, 45, 0.75) 0%, rgba(10, 15, 25, 0.75) 100%);
     --text-primary: #ffffff;
-    --text-secondary: #a0aec0;
+    --text-secondary: #c0c5d5;
     --glass-border: rgba(255, 255, 255, 0.15);
     --glass-highlight: rgba(255, 255, 255, 0.3);
 }
@@ -31,7 +31,7 @@ body, html {
     left: 0;
     width: 200vw;
     height: 200vh;
-    background: radial-gradient(circle at 50% 50%, #0c1a35 0%, #030613 60%);
+    background: radial-gradient(circle at 50% 50%, #151e36 0%, var(--bg-color) 60%);
     z-index: -2;
     animation: bgBreathe 20s ease-in-out infinite alternate;
 }
@@ -47,8 +47,8 @@ body, html {
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
     background-image: 
-        linear-gradient(rgba(0, 240, 255, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0, 240, 255, 0.03) 1px, transparent 1px);
+        linear-gradient(rgba(0, 240, 255, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 240, 255, 0.08) 1px, transparent 1px);
     background-size: 50px 50px;
     z-index: -1;
     transform: perspective(500px) rotateX(60deg) scale(2);
