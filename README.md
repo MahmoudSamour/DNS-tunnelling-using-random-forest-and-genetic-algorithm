@@ -16,6 +16,11 @@
 
 ---
 
+## 🎓 Interactive PhD Defense Presentation
+Explore this research visually through the custom-built **[Interactive 3D Presentation Engine](./Interactive_Defense/index.html)**. Simply open `index.html` in any web browser to experience a cinematic, infinite-canvas presentation featuring glowing neural network connections and native HTML flowcharts designed specifically for this thesis defense.
+
+---
+
 ## 🎬 The Story: A Hacker's Perfect Hiding Spot
 
 Imagine you are a network security engineer monitoring all traffic at your company's firewall. You check your logs — everything looks clean. Only normal HTTPS web requests. Your security tools give you a green light. ✅
@@ -84,7 +89,7 @@ The challenge: there are **34 such features**. Using all of them in a real-time 
 │   │  over 100 gens.     │    │   for imbalanced     │  │
 │   └─────────────────────┘    └──────────────────────┘  │
 │              ↕                          ↕               │
-│         10 Features              99.75% F1-Score        │
+│         10 Features              99.84% F1-Score        │
 └─────────────────────────────────────────────────────────┘
 ```
 
@@ -157,10 +162,10 @@ The central claim of this research is that **using fewer features does not hurt 
 
 | Strategy | Features | F1-Score | Train Time | Latency |
 |:---|:---:|:---:|:---:|:---:|
-| 🔴 Baseline (All Features) | 32 | 0.993 | 10.2s | 0.00041 ms/pkt |
-| 🟡 SOTA: Matrix-GA | 13 | 0.990 | 5.7s | 0.00030 ms/pkt |
-| 🟡 SOTA: JAYA-GA | 17 | 0.989 | 10.0s | 0.00032 ms/pkt |
-| 🟢 **Proposed Penalty-GA** | **10** | **0.9975** | **6.9s** | **0.00032 ms/pkt** |
+| 🔴 Baseline (All Features) | 32 | 0.9939 | 10.2s | 0.00041 ms/pkt |
+| 🟡 SOTA: Matrix-GA | 14 | 0.9932 | 5.7s | 0.00030 ms/pkt |
+| 🟡 SOTA: JAYA-GA | 13 | 0.9943 | 10.0s | 0.00030 ms/pkt |
+| 🟢 **Proposed Penalty-GA** | **10** | **0.9984** | **4.78s** | **0.00028 ms/pkt** |
 
 > **🎬 Video Note:** The scatter plot shows our method landing in the top-left "sweet spot" — best accuracy-to-feature ratio. Use this as your "hero slide" in the thumbnail.
 
@@ -174,12 +179,13 @@ Why Random Forest and not Logistic Regression or a simple Decision Tree?
 
 | Algorithm | F1-Score | Accuracy | Balanced Acc |
 |:---|:---:|:---:|:---:|
-| 🏆 **Random Forest (Proposed)** | **0.9975** | **0.9975** | **0.9931** |
+| 🏆 **Random Forest (Proposed)** | **0.9984** | **0.9984** | **0.9921** |
+| 🛡️ **Assumed Blind (Without DoH)** | **0.9974** | **0.9973** | **0.9908** |
+| Decision Tree | 0.9777 | 0.9762 | 0.9045 |
 | Deep ANN (MLP) | 0.9944 | 0.9944 | 0.9845 |
 | KNN-Optimized | 0.9935 | 0.9935 | 0.9819 |
-| Decision Tree | 0.9962 | 0.9962 | 0.9893 |
 | SVM (RBF-Approx) | 0.9565 | 0.9549 | 0.8763 |
-| Logistic Regression | 0.9402 | 0.9390 | 0.8339 |
+| Logistic Regression | 0.9402 | 0.9390 | 0.7161 |
 | Naive Bayes | 0.9340 | 0.9357 | 0.8296 |
 
 > **Why RF wins:** Ensemble bagging reduces variance. Each of the 100 trees votes independently — no single noisy feature can derail the prediction. Logistic Regression collapses on the non-linear, multi-class distribution of DoH traffic.
@@ -204,7 +210,7 @@ The most dangerous failure mode of any IDS is blocking legitimate traffic. Execu
 | Iodine | 97.77% | 98.72% | **98.24%** |
 | DNS2TCP | 99.51% | 99.04% | **99.27%** |
 | DNScat2 | 97.40% | 98.18% | **97.79%** |
-| **Weighted Average** | **99.75%** | **99.75%** | **99.75%** |
+| **Weighted Average** | **99.84%** | **99.84%** | **99.84%** |
 
 ---
 
@@ -280,16 +286,16 @@ After 100 generations of evolution, the Genetic Algorithm converged on these fea
 
 | Feature ID | Name | Why It Matters |
 |:---:|:---|:---|
-| F1 | Flow Duration | Tunnels maintain persistent long-lived connections |
-| F6 | Fwd Packet Length Max | Large max = data exfiltration chunk |
-| F8 | Fwd Packet Length Mean | Tunneling tools chunk data consistently |
-| F12 | Bwd Packet Length Mean | C2 command response size reveals server type |
-| F14 | Flow Bytes/s | Throughput anomaly is the loudest signal |
-| F16 | Flow IAT Mean | Automated tools have machine-precise timing |
-| F17 | Flow IAT Std | Low variance = automated beaconing |
-| F20 | Fwd IAT Total | Total outbound timing exposes automation |
-| F30 | Fwd Header Length | Anomalous header construction patterns |
-| F34 | Information Entropy | Encrypted/obfuscated payload marker |
+| F32 | DoH-Flag | Direct indicator of encrypted protocol utilization |
+| F12 | Packet Length Mode | Consistent packet sizes reveal hidden C2 rhythm |
+| F14 | Packet Length Skew From Mode | Identifies distributional anomaly vs benign HTTPS |
+| F11 | Packet Length Median | Robust central tendency bypassing extreme outliers |
+| F10 | Packet Length Mean | Average data chunking indicates non-human transfer |
+| F7 | Flow Received Rate | High inbound traffic implies C2 instruction beaconing |
+| F5 | Flow Sent Rate | Measured exfiltration data spikes |
+| F22 | Packet Time Skew From Mode | Detects automated cron-job tunneling behavior |
+| F1 | Source Port | Anomalous origin sockets compared to browsers |
+| F2 | Destination Port | Distinctive routing vectors beyond normal 443 |
 
 ### Reproducibility Configuration
 

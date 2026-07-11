@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Detection of DNS Tunneling - Interactive Defense</title>
+    <!-- Use Google Fonts for premium typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Ambient animated background -->
+    <div id="ambient-bg"></div>
+
+    <!-- UI Overlay (Controls) -->
+    <div id="ui-overlay">
+        <button id="btn-map" title="Return to Map (Esc)">🌐 Global Map</button>
+        <div class="nav-controls">
+            <button id="btn-prev" title="Previous Slide (Left Arrow)">◀ Prev</button>
+            <span id="slide-counter">Map View</span>
+            <button id="btn-next" title="Next Slide (Right Arrow/Space)">Next ▶</button>
+        </div>
+    </div>
+
+    <!-- The 3D Camera / Universe Container -->
+    <div id="universe">
+        <!-- The infinite canvas holding the nodes -->
+        <div id="canvas">
+            
+            <!-- SVG Network Lines -->
+            <svg id="network-lines" style="position: absolute; top: 0; left: 0; width: 1px; height: 1px; overflow: visible; z-index: -1;"></svg>
+
+            <!-- Slide 1 -->
+            <div class="node" data-slide="1">
+                <div class="node-content">
+                    <h1 class="glow-text">Enhanced Detection of DNS Tunnelling</h1>
+                    <h2>Leveraging Random Forest and Genetic Algorithm for Improved Security</h2>
+                    <div class="divider"></div>
+                    <p class="subtitle"><strong>PhD Candidate:</strong> Mahmoud Samour</p>
+                    <p class="subtitle"><strong>Supervisors:</strong> Ts. Dr. Mohd Fairuz Iskandar Othman & Dr. Aslinda Binti Hassan</p>
+                    <p class="subtitle">Faculty of Information and Communication Technology, UTeM</p>
+                </div>
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="node" data-slide="2">
+                <div class="node-content">
+                    <h1>Presentation Outline</h1>
+                    <div class="divider"></div>
+                    <ol class="styled-list">
+                        <li><strong>Introduction:</strong> The DNS Threat Landscape</li>
+                        <li><strong>Problem Statement:</strong> The Blind Spot of Encryption</li>
+                        <li><strong>Research Questions & Objectives</strong></li>
+                        <li><strong>Literature Review:</strong> The Feature Engineering Gap</li>
+                        <li><strong>Methodology:</strong> The GA-RF Framework</li>
+                        <li><strong>Empirical Results:</strong> Beating the Curse of Dimensionality</li>
+                        <li><strong>Research Contributions & Conclusion</strong></li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="node" data-slide="3">
+                <div class="node-content">
+                    <h1>Introduction to the Threat Landscape</h1>
+                    <div class="divider"></div>
+                    <p>Attackers are wrapping malicious tunneling traffic inside encrypted <strong>DNS over HTTPS (DoH)</strong>, effectively bypassing traditional firewalls.</p>
+                    <div class="img-container">
+                        <img src="images/Evolution of DNS Threat Landscape.png" alt="Evolution of Threats">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 4 -->
+            <div class="node" data-slide="4">
+                <div class="node-content">
+                    <h1>Problem Statement</h1>
+                    <div class="divider"></div>
+                    <div class="grid-2col">
+                        <div>
+                            <ul class="styled-list">
+                                <li><strong>DoH Encryption</strong> completely blinds Deep Packet Inspection (DPI).</li>
+                                <li><strong>High Dimensionality:</strong> Extracting behavioral features causes severe computational bottlenecks.</li>
+                                <li><strong>NP-Hard Optimization:</strong> Selecting the perfect feature subset is mathematically complex.</li>
+                            </ul>
+                        </div>
+                        <div class="img-container">
+                            <img src="images/Standard DNS vs DoH.png" alt="Standard DNS vs DoH">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 5 -->
+            <div class="node" data-slide="5">
+                <div class="node-content">
+                    <h1>Research Questions & Objectives</h1>
+                    <div class="divider"></div>
+                    <div class="grid-2col">
+                        <div class="glass-panel">
+                            <h3>The Questions</h3>
+                            <ul class="styled-list">
+                                <li><strong>RQ1:</strong> How can we accurately classify Encrypted DNS Tunneling?</li>
+                                <li><strong>RQ2:</strong> How do we extract the most optimal, low-latency feature subset?</li>
+                            </ul>
+                        </div>
+                        <div class="glass-panel">
+                            <h3>The Objectives</h3>
+                            <ol class="styled-list">
+                                <li><strong>Develop</strong> an advanced Random Forest model.</li>
+                                <li><strong>Select</strong> optimal features via Genetic Algorithm.</li>
+                                <li><strong>Evaluate</strong> enhancements in Accuracy and Latency.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 6 -->
+            <div class="node" data-slide="6">
+                <div class="node-content">
+                    <h1>Literature Review Gaps</h1>
+                    <div class="divider"></div>
+                    <div class="glass-panel danger-panel">
+                        <h3>The Current State of the Art</h3>
+                        <ul class="styled-list">
+                            <li><strong>Deep Learning Models:</strong> Act as uninterpretable "black boxes" requiring massive GPU overhead.</li>
+                            <li><strong>Standard Feature Filtering:</strong> Fails to capture non-linear relationships in noisy encrypted data.</li>
+                            <li><strong>Evolutionary Algorithms:</strong> Severely underutilized in DoH threat detection.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 7 -->
+            <div class="node" data-slide="7">
+                <div class="node-content">
+                    <h1>Methodology Overview</h1>
+                    <div class="divider"></div>
+                    <p class="subtitle">The research is executed across three rigorous phases.</p>
+                    <div class="html-flowchart">
+                        <div class="flow-node">Data Collection and Preprocessing</div>
+                        <div class="flow-arrow"></div>
+                        <div class="flow-node">Feature Engineering</div>
+                        <div class="flow-arrow"></div>
+                        <div class="flow-node">Model Training</div>
+                        <div class="flow-arrow"></div>
+                        <div class="flow-node">Feature Selection Using Genetic Algorithm (GA)</div>
+                        <div class="flow-arrow"></div>
+                        <div class="flow-node">Model Evaluation</div>
+                        <div class="flow-arrow"></div>
+                        <div class="flow-node">Results Analysis</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 8 -->
+            <div class="node" data-slide="8">
+                <div class="node-content">
+                    <h1>The Penalty-Based Genetic Algorithm</h1>
+                    <div class="divider"></div>
+                    <p class="subtitle">An adaptive penalty mechanism (λ<sub>g</sub>) mathematically punishes chromosomes that select too many features.</p>
+                    
+                    <div style="display: flex; justify-content: space-around; align-items: stretch; width: 100%; margin-top: 20px;">
+                        
+                        <!-- Left Column (Steps 1-5) -->
+                        <div class="html-flowchart" style="width: 42%;">
+                            <div class="flow-node start-end">Start</div>
+                            <div class="flow-arrow"></div>
+                            <div class="flow-node">Initialize Population</div>
+                            <div class="flow-arrow"></div>
+                            <div class="flow-node">Evaluate Fitness</div>
+                            <div class="flow-arrow"></div>
+                            <div class="flow-node">Apply Penalty to Fitness</div>
+                            <div class="flow-arrow"></div>
+                            <div class="flow-node">Select Individuals</div>
+                        </div>
+
+                        <!-- Diagonal Connection Arrow -->
+                        <div style="width: 16%; position: relative; display: flex; align-items: stretch;">
+                            <svg style="width: 100%; height: 100%; overflow: visible; filter: drop-shadow(0 0 8px rgba(0,240,255,0.8));">
+                                <defs>
+                                    <marker id="diagonal-arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto-start-reverse">
+                                        <polygon points="0 1, 10 5, 0 9" fill="#00f0ff" />
+                                    </marker>
+                                </defs>
+                                <line x1="10%" y1="90%" x2="90%" y2="10%" stroke="#00f0ff" stroke-width="3" stroke-dasharray="8 6" marker-end="url(#diagonal-arrow)" />
+                            </svg>
+                        </div>
+
+                        <!-- Right Column (Steps 6-9) -->
+                        <div class="html-flowchart" style="width: 42%;">
+                            <div class="flow-node">Apply Genetic Operators<br><small>(Crossover & Mutation)</small></div>
+                            <div class="flow-arrow"></div>
+                            <div class="flow-node">Update Population</div>
+                            <div class="flow-arrow"></div>
+                            <div class="flow-node decision">Convergence Check</div>
+                            <div class="flow-arrow"></div>
+                            <div class="flow-node start-end">End</div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 9 -->
+            <div class="node" data-slide="9">
+                <div class="node-content">
+                    <h1>The Enhanced GA-RF Architecture</h1>
+                    <div class="divider"></div>
+                    <p>Integrating surviving features into an optimized Random Forest with XAI (Explainable AI) transparency.</p>
+                    <div class="img-container large-img">
+                        <img src="images/Detailed Architecture of the Proposed GA-RF Methodology.png" alt="GA-RF Architecture">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 10 -->
+            <div class="node" data-slide="10">
+                <div class="node-content">
+                    <h1 class="glow-text">Empirical Results & Metrics</h1>
+                    <h2>Solving the Curse of Dimensionality</h2>
+                    <div class="divider"></div>
+                    
+                    <table class="metrics-table">
+                        <tr>
+                            <th>Metric</th>
+                            <th>Result</th>
+                            <th>Impact</th>
+                        </tr>
+                        <tr class="highlight-row">
+                            <td>Weighted F1 Score</td>
+                            <td>99.84%</td>
+                            <td>Near-Perfect</td>
+                        </tr>
+                        <tr class="highlight-row">
+                            <td>Feature Subset</td>
+                            <td>10 Features</td>
+                            <td>Down from 32</td>
+                        </tr>
+                        <tr class="highlight-row">
+                            <td>Training Time</td>
+                            <td>53% Decrease</td>
+                            <td>Massive Efficiency</td>
+                        </tr>
+                        <tr class="highlight-row">
+                            <td>Per-Packet Latency</td>
+                            <td>32% Decrease</td>
+                            <td>Real-Time Ready</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Slide 11 -->
+            <div class="node" data-slide="11">
+                <div class="node-content">
+                    <h1>The Pareto Frontier (Trade-off Analysis)</h1>
+                    <div class="divider"></div>
+                    <p>Maximizing detection accuracy while utilizing the minimum possible number of features.</p>
+                    <div class="img-container large-img">
+                        <img src="images/fig_tradeoff_analysis.png" alt="Tradeoff Analysis">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 12 -->
+            <div class="node" data-slide="12">
+                <div class="node-content">
+                    <h1>Multi-Class Confusion Matrix</h1>
+                    <div class="divider"></div>
+                    <p>Near-zero misclassification across complex tunneling tools like DNScat2 and Iodine.</p>
+                    <div class="img-container large-img">
+                        <img src="images/fig5_confusion_matrix.png" alt="Confusion Matrix">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 13 -->
+            <div class="node" data-slide="13">
+                <div class="node-content">
+                    <h1>Ablation Study & Robustness</h1>
+                    <div class="divider"></div>
+                    <p>Removing the explicit <code>DoH-Flag</code> caused only a <strong>0.10% variance</strong>, proving true behavioral learning.</p>
+                    <div class="img-container large-img">
+                        <img src="images/fig3_roc_curve.png" alt="ROC Curve">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 14 -->
+            <div class="node" data-slide="14">
+                <div class="node-content">
+                    <h1>Research Contributions</h1>
+                    <div class="divider"></div>
+                    <div class="glass-panel">
+                        <ol class="styled-list">
+                            <li><strong>A Novel Penalty-Based GA:</strong> Introducing an adaptive penalty mechanism to perfectly balance accuracy and dimensionality.</li>
+                            <li><strong>An Enhanced Hybrid Framework:</strong> A robust, DPI-free IDS architecture capable of detecting DoH tunneling.</li>
+                            <li><strong>State-of-the-Art Benchmarking:</strong> Establishing a new baseline in the trade-off between operational latency and detection accuracy.</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 15 -->
+            <div class="node" data-slide="15">
+                <div class="node-content text-center">
+                    <h1 class="glow-text">Conclusion & Future Work</h1>
+                    <div class="divider"></div>
+                    <p class="subtitle">This research successfully bridges the gap between high accuracy and computational efficiency in modern cybersecurity.</p>
+                    <br>
+                    <div class="glass-panel">
+                        <h3>Future Avenues</h3>
+                        <ul class="styled-list">
+                            <li>Adapting the GA-RF framework for resource-constrained <strong>IoT Networks</strong>.</li>
+                            <li>Testing against polymorphic zero-day tunneling variants.</li>
+                        </ul>
+                    </div>
+                    <br><br>
+                    <h2 class="glow-text">Thank You. Questions?</h2>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
