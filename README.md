@@ -381,7 +381,7 @@ python heavy_master_evaluation.py
   title   = {Enhanced Detection of DNS Tunneling: Leveraging a Penalty-Based
              Genetic Algorithm and Random Forest for Real-Time Security},
   author  = {Sammour, Mahmoud},
-  school  = {Universiti Teknologi Malaysia (UTM)},
+  school  = {Universiti Teknikal Malaysia Melaka (UTeM)},
   year    = {2025},
   note    = {Faculty of Computing}
 }
