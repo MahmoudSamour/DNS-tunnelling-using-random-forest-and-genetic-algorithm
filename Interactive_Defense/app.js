@@ -1,37 +1,38 @@
 document.addEventListener('DOMContentLoaded', () => {
     const nodes = document.querySelectorAll('.node');
-    const universe = document.getElementById('universe'); // Handles Zoom / Depth / Pan
-    const canvas = document.getElementById('canvas');     // Handles X / Y panning for slide focus
+    const universe = document.getElementById('universe');
+    const canvas = document.getElementById('canvas');
     const slideCounter = document.getElementById('slide-counter');
     
     const btnNext = document.getElementById('btn-next');
     const btnPrev = document.getElementById('btn-prev');
     const btnMap = document.getElementById('btn-map');
+    const btnNotes = document.getElementById('btn-notes');
 
     let currentActiveIndex = -1; // -1 means Map View
     let isTransitioning = false;
+    let showNotes = false;
     
     // Pan and Zoom State for Map View
     let isDragging = false;
     let startX = 0, startY = 0;
     let currentPanX = 0;
-    let currentPanY = -100;
-    let currentZoom = 0.07;
+    let currentPanY = -50;
     
-    // Layout Config: Circular Layout
-    const RADIUS = 6000; 
+    // Layout Config: Dynamic Circular Layout
+    const RADIUS = Math.max(7000, nodes.length * 380);
+    let currentZoom = Math.min(0.06, 500 / RADIUS);
     
     const svg = document.getElementById('network-lines');
     let pathData = '';
 
-    // Position nodes in a massive ring
+    // Position nodes in a constellation ring
     nodes.forEach((node, index) => {
-        // Calculate angle (starts at top, -90 degrees, goes clockwise)
         const angle = (index / nodes.length) * Math.PI * 2 - (Math.PI / 2);
         
         const x = RADIUS * Math.cos(angle);
         const y = RADIUS * Math.sin(angle);
-        const z = (Math.random() * 400) - 200; // Slight depth variation
+        const z = (Math.random() * 300) - 150;
 
         node.dataset.x = x;
         node.dataset.y = y;
@@ -39,16 +40,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
         node.style.transform = `translate3d(${x}px, ${y}px, ${z}px)`;
         
-        // SVG path
         if (index === 0) {
             pathData += `M ${x} ${y} `;
         } else {
             pathData += `L ${x} ${y} `;
         }
 
-        // Click event to zoom into node
         node.addEventListener('click', (e) => {
-            // Prevent click if we were dragging
             if (isDragging) return;
             if (currentActiveIndex !== index && !isTransitioning) {
                 goToSlide(index);
@@ -56,30 +54,30 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Render the SVG
+    if (nodes.length > 0) {
+        pathData += 'Z'; // Close ring
+    }
+
+    // Render the SVG constellation path
     const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
     path.setAttribute('d', pathData);
-    path.setAttribute('stroke', 'rgba(0, 240, 255, 0.8)');
-    path.setAttribute('stroke-width', '20');
+    path.setAttribute('stroke', 'rgba(0, 240, 255, 0.4)');
+    path.setAttribute('stroke-width', '24');
     path.setAttribute('fill', 'none');
-    path.style.filter = 'drop-shadow(0 0 25px rgba(0, 240, 255, 1))';
+    path.style.filter = 'drop-shadow(0 0 30px rgba(0, 240, 255, 0.8))';
     path.style.strokeLinecap = 'round';
     path.style.strokeLinejoin = 'round';
     svg.appendChild(path);
 
-    // --- INTERACTIVE PAN AND ZOOM ---
+    // Pan and Zoom dragging
     document.addEventListener('mousedown', (e) => {
-        // Only allow drag in Map View
         if (currentActiveIndex !== -1 || isTransitioning) return;
-        
-        // Don't drag if clicking a button
-        if (e.target.tagName.toLowerCase() === 'button') return;
+        if (e.target.closest('#ui-overlay') || e.target.tagName.toLowerCase() === 'button' || e.target.tagName.toLowerCase() === 'a') return;
 
         isDragging = true;
         startX = e.clientX - currentPanX;
         startY = e.clientY - currentPanY;
         
-        // Disable CSS transition for smooth frame-by-frame dragging
         universe.style.transition = 'none';
         document.body.style.cursor = 'grabbing';
     });
@@ -90,14 +88,12 @@ document.addEventListener('DOMContentLoaded', () => {
         currentPanX = e.clientX - startX;
         currentPanY = e.clientY - startY;
         
-        // Apply transform immediately
-        universe.style.transform = `translate(${currentPanX}px, ${currentPanY}px) scale(${currentZoom}) rotateX(15deg)`;
+        universe.style.transform = `translate(${currentPanX}px, ${currentPanY}px) scale(${currentZoom}) rotateX(12deg)`;
     });
 
     document.addEventListener('mouseup', () => {
         if (isDragging) {
             isDragging = false;
-            // Restore CSS transition
             universe.style.transition = 'transform 0.7s cubic-bezier(0.65, 0, 0.35, 1)';
             document.body.style.cursor = 'default';
         }
@@ -107,15 +103,12 @@ document.addEventListener('DOMContentLoaded', () => {
         if (currentActiveIndex !== -1 || isTransitioning) return;
         e.preventDefault();
         
-        const zoomSensitivity = 0.001;
+        const zoomSensitivity = 0.0008;
         currentZoom -= e.deltaY * zoomSensitivity;
+        currentZoom = Math.max(0.015, Math.min(currentZoom, 0.5)); 
         
-        // Clamp zoom between 0.03 (very far) and 1.0 (close)
-        currentZoom = Math.max(0.03, Math.min(currentZoom, 1)); 
-        
-        universe.style.transform = `translate(${currentPanX}px, ${currentPanY}px) scale(${currentZoom}) rotateX(15deg)`;
+        universe.style.transform = `translate(${currentPanX}px, ${currentPanY}px) scale(${currentZoom}) rotateX(12deg)`;
     }, { passive: false });
-    // --------------------------------
 
     function goToSlide(index) {
         if (index < 0 || index >= nodes.length || isTransitioning) return;
@@ -125,33 +118,29 @@ document.addEventListener('DOMContentLoaded', () => {
         const activeNode = nodes[index];
         currentActiveIndex = index;
         
-        // Hide network lines
         document.body.classList.add('slide-active');
         
         const targetX = -parseFloat(activeNode.dataset.x);
         const targetY = -parseFloat(activeNode.dataset.y);
         const targetZ = -parseFloat(activeNode.dataset.z);
 
-        // Prezi-style Transition:
-        // 1. Zoom Out slightly to give a sense of movement
-        universe.style.transition = 'transform 0.7s cubic-bezier(0.65, 0, 0.35, 1)';
-        universe.style.transform = `translate(0px, 0px) scale(0.25) rotateX(5deg)`;
+        // Prezi Zoom out slightly, pan, then zoom in
+        universe.style.transition = 'transform 0.6s cubic-bezier(0.65, 0, 0.35, 1)';
+        universe.style.transform = `translate(0px, 0px) scale(0.2) rotateX(5deg)`;
         
         setTimeout(() => {
-            // 2. Pan canvas to the new slide
             canvas.style.transform = `translate3d(${targetX}px, ${targetY}px, ${targetZ}px)`;
             
             setTimeout(() => {
-                // 3. Zoom In to the new slide
                 universe.style.transform = `translate(0px, 0px) scale(1.0) rotateX(0deg)`;
                 activeNode.classList.add('active');
                 updateUI();
                 
                 setTimeout(() => {
                     isTransitioning = false;
-                }, 800);
-            }, 800);
-        }, 600);
+                }, 700);
+            }, 600);
+        }, 500);
     }
 
     function goToMap() {
@@ -160,34 +149,45 @@ document.addEventListener('DOMContentLoaded', () => {
         
         currentActiveIndex = -1;
         nodes.forEach(n => n.classList.remove('active'));
-        
-        // Show network lines
         document.body.classList.remove('slide-active');
         
-        // Center the canvas
         canvas.style.transform = `translate3d(0px, 0px, 0px)`;
         
-        // Reset pan/zoom to ensure the entire 6000px radius circle is visible
         currentPanX = 0;
-        currentPanY = -100;
-        currentZoom = 0.07;
+        currentPanY = -50;
+        currentZoom = Math.min(0.06, 500 / RADIUS);
         
-        universe.style.transition = 'transform 0.7s cubic-bezier(0.65, 0, 0.35, 1)';
-        universe.style.transform = `translate(${currentPanX}px, ${currentPanY}px) scale(${currentZoom}) rotateX(15deg)`;
+        universe.style.transition = 'transform 0.8s cubic-bezier(0.65, 0, 0.35, 1)';
+        universe.style.transform = `translate(${currentPanX}px, ${currentPanY}px) scale(${currentZoom}) rotateX(12deg)`;
         
         updateUI();
-        setTimeout(() => { isTransitioning = false; }, 1000);
+        setTimeout(() => { isTransitioning = false; }, 900);
     }
 
     function updateUI() {
         if (currentActiveIndex === -1) {
-            slideCounter.textContent = 'Map View';
+            slideCounter.textContent = 'Global Map View';
             btnPrev.style.opacity = '0.5';
             btnNext.style.opacity = '1';
         } else {
+            const currentTitle = nodes[currentActiveIndex].dataset.title || '';
+            const shortTitle = currentTitle.length > 25 ? currentTitle.substring(0, 25) + '...' : currentTitle;
             slideCounter.textContent = `Slide ${currentActiveIndex + 1} of ${nodes.length}`;
             btnPrev.style.opacity = currentActiveIndex > 0 ? '1' : '0.5';
             btnNext.style.opacity = currentActiveIndex < nodes.length - 1 ? '1' : '0.5';
+        }
+    }
+
+    function toggleNotes() {
+        showNotes = !showNotes;
+        if (showNotes) {
+            document.body.classList.add('show-notes');
+            btnNotes.style.background = '#f59e0b';
+            btnNotes.style.color = '#000000';
+        } else {
+            document.body.classList.remove('show-notes');
+            btnNotes.style.background = '';
+            btnNotes.style.color = '';
         }
     }
 
@@ -200,6 +200,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     btnMap.addEventListener('click', goToMap);
+    btnNotes.addEventListener('click', toggleNotes);
 
     document.addEventListener('keydown', (e) => {
         if (isTransitioning) return;
@@ -209,9 +210,10 @@ document.addEventListener('DOMContentLoaded', () => {
             if (currentActiveIndex > 0) goToSlide(currentActiveIndex - 1);
         } else if (e.key === 'Escape') {
             goToMap();
+        } else if (e.key === 'n' || e.key === 'N') {
+            toggleNotes();
         }
     });
 
-    // Initialize Map View
     setTimeout(goToMap, 100);
 });
